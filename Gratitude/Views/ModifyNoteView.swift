@@ -9,13 +9,33 @@
 import SwiftUI
 
 struct ModifyNoteView: View {
+    @Environment(\.managedObjectContext) var managedContext
+
+    @State private var text = ""
+    @State private var textStyle = UIFont.TextStyle.body
+    
+    @ObservedObject var note: Note
+    
     var body: some View {
-        Text("Modify Note View")
+        VStack {
+            TextView(text: $text, textStyle: $textStyle)
+        }
+        .padding()
+        .onAppear() {
+            self.text = self.note.text ?? ""
+        }.onDisappear() {
+            do {
+                self.note.text = self.text
+                try self.note.managedObjectContext?.save()
+            } catch {
+                fatalError("Failed to save note: \(error.localizedDescription)")
+            }
+        }
     }
 }
 
-struct ModifyNoteView_Previews: PreviewProvider {
-    static var previews: some View {
-        ModifyNoteView()
-    }
-}
+//struct ModifyNoteView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ModifyNoteView()
+//    }
+//}

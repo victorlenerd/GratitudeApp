@@ -17,8 +17,6 @@ struct TextView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> UITextView {
         let textView = UITextView()
-        
-        textView.text = "Start small"
 
         textView.autocapitalizationType = .sentences
         textView.isSelectable = true
