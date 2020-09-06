@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		CB44E71FA14D8445F860D399 /* Pods_Gratitude_GratitudeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C3AD152BAFD8C07F22107A /* Pods_Gratitude_GratitudeUITests.framework */; };
 		E60C4674FF32760A1AD39CED /* Pods_Gratitude.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC3C715A3848BF2FEC27E4A /* Pods_Gratitude.framework */; };
+		E72B959425045A7E00096A8A /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B959325045A7E00096A8A /* ForgotPasswordView.swift */; };
+		E72B9596250465CF00096A8A /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B9595250465CF00096A8A /* NotesView.swift */; };
+		E72B9598250465EB00096A8A /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B9597250465EB00096A8A /* FeedView.swift */; };
+		E72B959C2504661800096A8A /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B959B2504661800096A8A /* FriendsView.swift */; };
+		E72B959E2504663F00096A8A /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B959D2504663F00096A8A /* NoteView.swift */; };
+		E72B95A02504666300096A8A /* CreateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B959F2504666300096A8A /* CreateNoteView.swift */; };
+		E72B95A22504668A00096A8A /* ModifyNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B95A12504668A00096A8A /* ModifyNoteView.swift */; };
 		E78E23FA7EAACF5BA3E8D56D /* Pods_GratitudeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A5422A71E762C499A5F8F5 /* Pods_GratitudeTests.framework */; };
 		E7C9073F25029C030095B122 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C9073E25029C030095B122 /* LoginView.swift */; };
 		E7C9074125029EF00095B122 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C9074025029EF00095B122 /* CreateAccountView.swift */; };
@@ -49,6 +56,13 @@
 		8F119ED92985735ABF67C87C /* Pods-Gratitude.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gratitude.release.xcconfig"; path = "Target Support Files/Pods-Gratitude/Pods-Gratitude.release.xcconfig"; sourceTree = "<group>"; };
 		A54D610D076D8C15A89EF793 /* Pods-GratitudeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GratitudeTests.debug.xcconfig"; path = "Target Support Files/Pods-GratitudeTests/Pods-GratitudeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C4C3AD152BAFD8C07F22107A /* Pods_Gratitude_GratitudeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gratitude_GratitudeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E72B959325045A7E00096A8A /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
+		E72B9595250465CF00096A8A /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		E72B9597250465EB00096A8A /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		E72B959B2504661800096A8A /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		E72B959D2504663F00096A8A /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		E72B959F2504666300096A8A /* CreateNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteView.swift; sourceTree = "<group>"; };
+		E72B95A12504668A00096A8A /* ModifyNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyNoteView.swift; sourceTree = "<group>"; };
 		E7C9073E25029C030095B122 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E7C9074025029EF00095B122 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		E7C9074B2502AE3F0095B122 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -115,6 +129,13 @@
 				E7C9073E25029C030095B122 /* LoginView.swift */,
 				E7C9074025029EF00095B122 /* CreateAccountView.swift */,
 				E7EF824424FD659A00089B94 /* MainView.swift */,
+				E72B959325045A7E00096A8A /* ForgotPasswordView.swift */,
+				E72B9595250465CF00096A8A /* NotesView.swift */,
+				E72B9597250465EB00096A8A /* FeedView.swift */,
+				E72B959B2504661800096A8A /* FriendsView.swift */,
+				E72B959D2504663F00096A8A /* NoteView.swift */,
+				E72B959F2504666300096A8A /* CreateNoteView.swift */,
+				E72B95A12504668A00096A8A /* ModifyNoteView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -444,11 +465,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E72B959C2504661800096A8A /* FriendsView.swift in Sources */,
 				E7C9074125029EF00095B122 /* CreateAccountView.swift in Sources */,
+				E72B9598250465EB00096A8A /* FeedView.swift in Sources */,
+				E72B959425045A7E00096A8A /* ForgotPasswordView.swift in Sources */,
+				E72B959E2504663F00096A8A /* NoteView.swift in Sources */,
 				E7EF824324FD659A00089B94 /* Gratitude.xcdatamodeld in Sources */,
 				E7EF823E24FD659A00089B94 /* AppDelegate.swift in Sources */,
 				E7EF824524FD659A00089B94 /* MainView.swift in Sources */,
+				E72B95A02504666300096A8A /* CreateNoteView.swift in Sources */,
+				E72B95A22504668A00096A8A /* ModifyNoteView.swift in Sources */,
 				E7EF824024FD659A00089B94 /* SceneDelegate.swift in Sources */,
+				E72B9596250465CF00096A8A /* NotesView.swift in Sources */,
 				E7C9073F25029C030095B122 /* LoginView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

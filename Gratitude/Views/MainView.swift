@@ -9,8 +9,29 @@
 import SwiftUI
 
 struct MainView: View {
+    @State private var selection = 2
+
     var body: some View {
-        Text("Hello, World!")
+        TabView(selection:$selection) {
+            FriendsView()
+                .tabItem {
+                    Image(systemName: "person.3")
+                    Text("Friends")
+            }
+            .tag(1)
+            FeedView()
+                .tabItem {
+                    Image(systemName: "list.dash")
+                    Text("Feed")
+            }
+            .tag(2)
+            NotesView()
+                .tabItem {
+                    Image(systemName: "square.and.pencil")
+                    Text("Notes")
+            }
+            .tag(3)
+        }
     }
 }
 

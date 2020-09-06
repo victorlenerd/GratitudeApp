@@ -1,21 +1,20 @@
 //
-//  SwiftUIView.swift
+//  ForgotPasswordView.swift
 //  Gratitude
 //
-//  Created by Nwaokocha Victor on 2020-09-04.
+//  Created by Nwaokocha Victor on 2020-09-05.
 //  Copyright © 2020 Nwaokocha Victor. All rights reserved.
 //
 
 import SwiftUI
 
-struct LoginView: View {
+struct ForgotPasswordView: View {
     @State private var email: String = ""
-    @State private var password: String = ""
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 10) {
-                Text("Login Account")
+                Text("Forgot Password")
                     .bold()
                     .font(.system(size: 22, weight: .light))
                     .padding()
@@ -23,39 +22,25 @@ struct LoginView: View {
                     Text("Email")
                     TextField("Enter your email", text: $email)
                         .padding(.bottom, 20)
-                    Text("Password")
-                    SecureField("Enter your password", text: $password)
-                        .padding(.bottom, 100)
                     HStack() {
-                        Button("Login", action: login)
+                        Button("Reset Password", action: resetPassword)
                             .padding(16)
                             .background(Color.black)
                             .font(.system(size: 18, weight: .light))
                             .foregroundColor(.white)
                             .border(Color.white)
-                        Spacer()
-                        Button("Forgot Password", action: openResetPasswordScreen)
                     }
+                    Spacer()
                 }.padding()
-                Spacer()
             }
         }
     }
     
-    // MARK:- Login
-    
-    func login() {}
-    
-    // MARK:- Open Create Account Screen
-    
-    func openCreateAccountScreen() {}
-    
-    // MARK:- Open Reset Password Screen
-    func openResetPasswordScreen() {}
+    func resetPassword() {}
 }
 
-struct LoginView_Previews: PreviewProvider {
+struct ForgotPasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        ForgotPasswordView()
     }
 }

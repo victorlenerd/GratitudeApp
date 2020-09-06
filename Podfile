@@ -7,8 +7,7 @@ target 'Gratitude' do
 
   # Pods for Gratitude
   pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
-  
+
   target 'GratitudeTests' do
     inherit! :search_paths
     # Pods for testing

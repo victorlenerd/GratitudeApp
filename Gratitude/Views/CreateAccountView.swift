@@ -7,10 +7,60 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct CreateAccountView: View {
+    @State private var name: String = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
+    
+    @State private var openLoginView: Bool = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Create New Account")
+                    .bold()
+                    .font(.system(size: 22, weight: .light))
+                    .padding()
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Name")
+                    TextField("Enter your name", text: $name)
+                        .padding(.bottom, 20)
+                    Text("Email")
+                    TextField("Enter your email", text: $email)
+                        .padding(.bottom, 20)
+                    Text("Password")
+                    SecureField("Enter your password", text: $password)
+                        .padding(.bottom, 100)
+                    HStack() {
+                        Button("Register", action: createAccount)
+                            .padding(16)
+                            .background(Color.black)
+                            .font(.system(size: 18, weight: .light))
+                            .foregroundColor(.white)
+                            .border(Color.white)
+                        Spacer()
+                        Button("I Already Have An Account", action: openLoginScreen)
+                    }
+                }.padding()
+                Spacer()
+                NavigationLink(destination: LoginView(), isActive: $openLoginView){
+                  Text("")
+                }.hidden()
+            }
+        }
+    }
+    
+    // MARK:- Create Account
+    
+    func createAccount() {}
+    
+    // MARK:- Open Login Account
+
+    func openLoginScreen() {
+        self.openLoginView = true
+        print("handleSuccessfullLogin")
     }
 }
 
