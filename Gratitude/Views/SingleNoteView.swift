@@ -1,5 +1,5 @@
 //
-//  NotesView.swift
+//  NoteView.swift
 //  Gratitude
 //
 //  Created by Nwaokocha Victor on 2020-09-05.
@@ -8,30 +8,20 @@
 
 import SwiftUI
 
-struct NotesView: View {
-    @FetchRequest(
-        entity: Note.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Note.updateDate, ascending: false)
-        ]
-    ) var notes: FetchedResults<Note>
-
-    
+struct SingleNoteView: View {
     var body: some View {
         NavigationView {
             VStack {
                 NavigationLink(destination: CreateNoteView()) {
-                    Text("Create Note")
+                    Text("Show Detail View")
                 }
             }.navigationBarTitle("Notes", displayMode: .large)
-        }.onAppear() {
-            print(self.notes.count)
         }
     }
 }
 
-struct NotesView_Previews: PreviewProvider {
+struct SingleNoteView_Previews: PreviewProvider {
     static var previews: some View {
-        NotesView()
+        SingleNoteView()
     }
 }

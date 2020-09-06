@@ -13,9 +13,15 @@
 		E72B9596250465CF00096A8A /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B9595250465CF00096A8A /* NotesView.swift */; };
 		E72B9598250465EB00096A8A /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B9597250465EB00096A8A /* FeedView.swift */; };
 		E72B959C2504661800096A8A /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B959B2504661800096A8A /* FriendsView.swift */; };
-		E72B959E2504663F00096A8A /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B959D2504663F00096A8A /* NoteView.swift */; };
+		E72B959E2504663F00096A8A /* SingleNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B959D2504663F00096A8A /* SingleNoteView.swift */; };
 		E72B95A02504666300096A8A /* CreateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B959F2504666300096A8A /* CreateNoteView.swift */; };
 		E72B95A22504668A00096A8A /* ModifyNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B95A12504668A00096A8A /* ModifyNoteView.swift */; };
+		E72B95A52504A5C300096A8A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B95A42504A5C300096A8A /* ProfileView.swift */; };
+		E72B95A72504DA8700096A8A /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B95A62504DA8700096A8A /* TextView.swift */; };
+		E72B95BD2504E87500096A8A /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B95B92504E87500096A8A /* Note+CoreDataClass.swift */; };
+		E72B95BE2504E87500096A8A /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B95BA2504E87500096A8A /* Note+CoreDataProperties.swift */; };
+		E72B95BF2504E87500096A8A /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B95BB2504E87500096A8A /* Friend+CoreDataClass.swift */; };
+		E72B95C02504E87500096A8A /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B95BC2504E87500096A8A /* Friend+CoreDataProperties.swift */; };
 		E78E23FA7EAACF5BA3E8D56D /* Pods_GratitudeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A5422A71E762C499A5F8F5 /* Pods_GratitudeTests.framework */; };
 		E7C9073F25029C030095B122 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C9073E25029C030095B122 /* LoginView.swift */; };
 		E7C9074125029EF00095B122 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C9074025029EF00095B122 /* CreateAccountView.swift */; };
@@ -60,9 +66,15 @@
 		E72B9595250465CF00096A8A /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		E72B9597250465EB00096A8A /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		E72B959B2504661800096A8A /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
-		E72B959D2504663F00096A8A /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		E72B959D2504663F00096A8A /* SingleNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleNoteView.swift; sourceTree = "<group>"; };
 		E72B959F2504666300096A8A /* CreateNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteView.swift; sourceTree = "<group>"; };
 		E72B95A12504668A00096A8A /* ModifyNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyNoteView.swift; sourceTree = "<group>"; };
+		E72B95A42504A5C300096A8A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		E72B95A62504DA8700096A8A /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		E72B95B92504E87500096A8A /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		E72B95BA2504E87500096A8A /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		E72B95BB2504E87500096A8A /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		E72B95BC2504E87500096A8A /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		E7C9073E25029C030095B122 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E7C9074025029EF00095B122 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		E7C9074B2502AE3F0095B122 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -123,6 +135,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E72B95A32504A08F00096A8A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E72B95A62504DA8700096A8A /* TextView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		E72B95A82504E6AD00096A8A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E72B95B92504E87500096A8A /* Note+CoreDataClass.swift */,
+				E72B95BA2504E87500096A8A /* Note+CoreDataProperties.swift */,
+				E72B95BB2504E87500096A8A /* Friend+CoreDataClass.swift */,
+				E72B95BC2504E87500096A8A /* Friend+CoreDataProperties.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E7C9074325029F320095B122 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,9 +164,10 @@
 				E72B9595250465CF00096A8A /* NotesView.swift */,
 				E72B9597250465EB00096A8A /* FeedView.swift */,
 				E72B959B2504661800096A8A /* FriendsView.swift */,
-				E72B959D2504663F00096A8A /* NoteView.swift */,
+				E72B959D2504663F00096A8A /* SingleNoteView.swift */,
 				E72B959F2504666300096A8A /* CreateNoteView.swift */,
 				E72B95A12504668A00096A8A /* ModifyNoteView.swift */,
+				E72B95A42504A5C300096A8A /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,6 +206,8 @@
 		E7EF823C24FD659A00089B94 /* Gratitude */ = {
 			isa = PBXGroup;
 			children = (
+				E72B95A82504E6AD00096A8A /* Models */,
+				E72B95A32504A08F00096A8A /* Components */,
 				E7C9074425029FD30095B122 /* Controllers */,
 				E7C9074325029F320095B122 /* Views */,
 				E7EF824624FD659C00089B94 /* Assets.xcassets */,
@@ -469,14 +503,20 @@
 				E7C9074125029EF00095B122 /* CreateAccountView.swift in Sources */,
 				E72B9598250465EB00096A8A /* FeedView.swift in Sources */,
 				E72B959425045A7E00096A8A /* ForgotPasswordView.swift in Sources */,
-				E72B959E2504663F00096A8A /* NoteView.swift in Sources */,
+				E72B959E2504663F00096A8A /* SingleNoteView.swift in Sources */,
 				E7EF824324FD659A00089B94 /* Gratitude.xcdatamodeld in Sources */,
 				E7EF823E24FD659A00089B94 /* AppDelegate.swift in Sources */,
+				E72B95C02504E87500096A8A /* Friend+CoreDataProperties.swift in Sources */,
 				E7EF824524FD659A00089B94 /* MainView.swift in Sources */,
 				E72B95A02504666300096A8A /* CreateNoteView.swift in Sources */,
+				E72B95A72504DA8700096A8A /* TextView.swift in Sources */,
+				E72B95BE2504E87500096A8A /* Note+CoreDataProperties.swift in Sources */,
 				E72B95A22504668A00096A8A /* ModifyNoteView.swift in Sources */,
 				E7EF824024FD659A00089B94 /* SceneDelegate.swift in Sources */,
+				E72B95BF2504E87500096A8A /* Friend+CoreDataClass.swift in Sources */,
 				E72B9596250465CF00096A8A /* NotesView.swift in Sources */,
+				E72B95BD2504E87500096A8A /* Note+CoreDataClass.swift in Sources */,
+				E72B95A52504A5C300096A8A /* ProfileView.swift in Sources */,
 				E7C9073F25029C030095B122 /* LoginView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

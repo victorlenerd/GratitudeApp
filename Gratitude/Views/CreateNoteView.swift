@@ -7,10 +7,41 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct CreateNoteView: View {
+    @Environment(\.managedObjectContext) var managedContext
+
+    @State private var text = ""
+    @State private var textStyle = UIFont.TextStyle.body
+    
     var body: some View {
-        Text("Create Note View")
+        VStack {
+            TextView(text: $text, textStyle: $textStyle)
+        }
+        .navigationBarTitle("New Note", displayMode: .inline)
+        .padding()
+        .onDisappear() {
+            if self.text.count > 1 {
+                let note = Note(context: self.managedContext)
+                
+                note.createDate = Date()
+                note.isPublic = false
+                note.ownerID = Auth.auth().currentUser?.uid
+                note.text = self.text
+                note.likes = 0
+                note.views = 0
+                note.updateDate = Date()
+                note.uuid = UUID()
+                
+                do {
+                    try self.managedContext.save()
+                } catch {
+                    fatalError("Failed to create your: \(error.localizedDescription)")
+                }
+    
+            }
+        }
     }
 }
 

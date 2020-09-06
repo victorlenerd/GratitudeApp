@@ -31,6 +31,12 @@ struct MainView: View {
                     Text("Notes")
             }
             .tag(3)
+            ProfileView()
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("Profile")
+            }
+            .tag(4)
         }
     }
 }
