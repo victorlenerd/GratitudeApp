@@ -7,9 +7,14 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ForgotPasswordView: View {
     @State private var email: String = ""
+    
+    @State private var showAlert: Bool = false
+    @State private var alertTitle: String = ""
+    @State private var alertMessage: String = ""
     
     var body: some View {
         NavigationView {
@@ -32,11 +37,29 @@ struct ForgotPasswordView: View {
                     }
                     Spacer()
                 }.padding()
+            }.alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text(self.alertTitle),
+                    message: Text(self.alertMessage),
+                    dismissButton: .default(Text("Got it!")))
             }
         }
     }
     
-    func resetPassword() {}
+    func resetPassword() {
+        Auth.auth().sendPasswordReset(withEmail: self.email) { (error: Error?) in
+            if let err = error {
+                self.showAlert = true
+                self.alertTitle = "Error"
+                self.alertMessage = err.localizedDescription
+                return
+            }
+            
+            self.showAlert = true
+            self.alertTitle = "Success"
+            self.alertMessage = "Check your email for a reset password mail"
+        }
+    }
 }
 
 struct ForgotPasswordView_Previews: PreviewProvider {
