@@ -69,26 +69,6 @@ struct SingleNoteView: View {
                 }
             }
         )
-        .onAppear() {
-//            if let currentUser = Auth.auth().currentUser {
-//                if self.note.ownerID! == currentUser.uid {
-//                    self.isNoteOwner = true
-//                }
-//            }
-//
-//            let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
-//            fetchRequest.predicate = NSPredicate(format: "uuid = %@", self.note.uuid!.uuidString)
-//
-//            do {
-//                let note = try self.managedContext.fetch(fetchRequest)
-//                print(note[0].text!)
-//            } catch {
-//                fatalError("Error occured while trying to get: \(error.localizedDescription)")
-//            }
-//
-//            print("...appearing")
-
-        }
     }
     
     func likeNote() {
@@ -96,10 +76,3 @@ struct SingleNoteView: View {
     }
     
 }
-
-//
-//struct SingleNoteView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SingleNoteView()
-//    }
-//}

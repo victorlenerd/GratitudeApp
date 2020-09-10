@@ -33,9 +33,3 @@ struct ModifyNoteView: View {
         }
     }
 }
-
-//struct ModifyNoteView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ModifyNoteView()
-//    }
-//}

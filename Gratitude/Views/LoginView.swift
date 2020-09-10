@@ -7,10 +7,16 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct LoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
+    
+    @State private var openResetPassword: Bool = false
+    @State private var alertTitle: String = "Error"
+    @State private var alertMessage: String = ""
+    @State private var showAlert: Bool = false
     
     var body: some View {
         NavigationView {
@@ -38,20 +44,36 @@ struct LoginView: View {
                     }
                 }.padding()
                 Spacer()
+                NavigationLink(destination: ForgotPasswordView(), isActive: $openResetPassword){
+                  Text("")
+                }.hidden()
+            }.alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text(self.alertTitle),
+                    message: Text(self.alertMessage),
+                    dismissButton: .default(Text("Got it!")))
             }
         }
     }
     
     // MARK:- Login
     
-    func login() {}
-    
-    // MARK:- Open Create Account Screen
-    
-    func openCreateAccountScreen() {}
+    func login() {
+        Auth.auth().signIn(withEmail: self.email, password: self.password) { (authDataResult: AuthDataResult?, error: Error?) in
+            
+            if let err = error {
+                self.alertMessage = err.localizedDescription
+            }
+            
+            // TODO:- Navigate to tab view
+                
+        }
+    }
     
     // MARK:- Open Reset Password Screen
-    func openResetPasswordScreen() {}
+    func openResetPasswordScreen() {
+        self.openResetPassword = true
+    }
 }
 
 struct LoginView_Previews: PreviewProvider {
