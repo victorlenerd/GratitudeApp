@@ -9,15 +9,21 @@
 import SwiftUI
 import Firebase
 
+let emailFormat = "(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}" + "~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" + "x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[\\p{L}0-9](?:[a-" + "z0-9-]*[\\p{L}0-9])?\\.)+[\\p{L}0-9](?:[\\p{L}0-9-]*[\\p{L}0-9])?|\\[(?:(?:25[0-5" + "]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-" + "9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" + "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
+
 struct CreateAccountView: View {
     @State private var name: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
     
     @State private var openLoginView: Bool = false
+    @State private var openMainView: Bool = false
+    
     @State private var showAlert: Bool = false
     @State private var alertTitle: String = ""
     @State private var alertMessage: String = ""
+    
+    var mainViewActiveNotification = Notification.Name("mainActive")
     
     var body: some View {
         NavigationView {
@@ -58,6 +64,11 @@ struct CreateAccountView: View {
                 NavigationLink(destination: LoginView(), isActive: $openLoginView){
                   Text("")
                 }.hidden()
+//                NavigationLink(destination: MainView(), isActive: $openMainView){
+//                  Text("")
+//                }
+//                .isDetailLink(false)
+//                .hidden()
             }
         }.alert(isPresented: $showAlert) {
             Alert(
@@ -88,12 +99,9 @@ struct CreateAccountView: View {
                         self.alertMessage = err.localizedDescription
                     }
                     
-                    print("User Created@")
+                    NotificationCenter.default.post(name: mainViewScene, object: nil)
                 }
             }
-            
-            
-            // TODO:- Navigate to tab view
         }
     }
     
@@ -107,8 +115,6 @@ struct CreateAccountView: View {
         if self.password.count < 6 {
             return false
         }
-        
-        let emailFormat = "(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}" + "~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" + "x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[\\p{L}0-9](?:[a-" + "z0-9-]*[\\p{L}0-9])?\\.)+[\\p{L}0-9](?:[\\p{L}0-9-]*[\\p{L}0-9])?|\\[(?:(?:25[0-5" + "]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-" + "9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" + "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
         
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
 

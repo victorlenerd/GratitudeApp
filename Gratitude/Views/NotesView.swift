@@ -7,6 +7,8 @@
 //
 
 import SwiftUI
+import Firebase
+
 
 struct NotesView: View {
     @FetchRequest(
@@ -15,7 +17,9 @@ struct NotesView: View {
             NSSortDescriptor(keyPath: \Note.updateDate, ascending: false)
         ]
     ) var notes: FetchedResults<Note>
+    
 
+    @State private var gotoLoginScreen: Bool = false
     
     var body: some View {
         NavigationView {
@@ -31,20 +35,25 @@ struct NotesView: View {
                         }
                     }
                 }
-            }.navigationBarTitle("Notes", displayMode: .large)
-            .navigationBarItems(trailing:
+            }
+            .navigationBarTitle("Notes", displayMode: .large)
+            .navigationBarItems(leading:
                NavigationLink(destination: CreateNoteView()) {
                    Text("Create Note")
-               }
-           )
-        }.onAppear() {
-            print(self.notes.count)
+                },
+            trailing:
+                Button(action: logout) {
+                    Text("Log Out")
+                })
         }
     }
-}
-
-struct NotesView_Previews: PreviewProvider {
-    static var previews: some View {
-        NotesView()
+    
+    func logout() {
+        do {
+            try Auth.auth().signOut()
+            NotificationCenter.default.post(name: mainViewScene, object: nil)
+        } catch {
+            fatalError("Failed to signout \(error.localizedDescription)")
+        }
     }
 }

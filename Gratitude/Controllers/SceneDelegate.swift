@@ -11,10 +11,11 @@ import SwiftUI
 import Firebase
 
 
+var mainViewScene = Notification.Name("mainViewActive")
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -30,6 +31,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let contentView = configureFirstScreen().environment(\.managedObjectContext, context)
 
+        NotificationCenter.default.addObserver(self, selector: #selector(self.switchToMainView(notification:)), name: mainViewScene, object: nil)
+        
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
@@ -74,6 +77,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func configureFirstScreen() -> AnyView {
         if (Auth.auth().currentUser == nil) {
+            print("Current USER is nil")
             return AnyView(CreateAccountView())
         }
         
@@ -81,6 +85,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         return AnyView(MainView())
     }
     
+    
+    @objc func switchToMainView(notification: Notification) {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let contentView = configureFirstScreen().environment(\.managedObjectContext, context)
+        
+        self.window?.rootViewController = UIHostingController(rootView: contentView)
+        self.window?.makeKeyAndVisible()
+    }
 
 }
 

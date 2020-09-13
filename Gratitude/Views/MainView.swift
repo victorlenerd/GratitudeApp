@@ -31,12 +31,8 @@ struct MainView: View {
                     Text("Notes")
             }
             .tag(3)
+        }.onAppear() {
+//            NotificationCenter.post("")
         }
-    }
-}
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
     }
 }
