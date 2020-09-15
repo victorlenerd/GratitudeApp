@@ -22,6 +22,10 @@
 		E72B95BF2504E87500096A8A /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B95BB2504E87500096A8A /* Friend+CoreDataClass.swift */; };
 		E72B95C02504E87500096A8A /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B95BC2504E87500096A8A /* Friend+CoreDataProperties.swift */; };
 		E78E23FA7EAACF5BA3E8D56D /* Pods_GratitudeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A5422A71E762C499A5F8F5 /* Pods_GratitudeTests.framework */; };
+		E7BCEEF5250EB75900E8D221 /* NoteContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEF4250EB75800E8D221 /* NoteContainer.swift */; };
+		E7BCEEF725104C2D00E8D221 /* GenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEF625104C2D00E8D221 /* GenericError.swift */; };
+		E7BCEEFA2510508000E8D221 /* FriendContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEF92510508000E8D221 /* FriendContainer.swift */; };
+		E7BCEEFC2510509500E8D221 /* FeedContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEFB2510509500E8D221 /* FeedContainer.swift */; };
 		E7C9073F25029C030095B122 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C9073E25029C030095B122 /* LoginView.swift */; };
 		E7C9074125029EF00095B122 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C9074025029EF00095B122 /* CreateAccountView.swift */; };
 		E7C9074C2502AE3F0095B122 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7C9074B2502AE3F0095B122 /* GoogleService-Info.plist */; };
@@ -73,6 +77,10 @@
 		E72B95BA2504E87500096A8A /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		E72B95BB2504E87500096A8A /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		E72B95BC2504E87500096A8A /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		E7BCEEF4250EB75800E8D221 /* NoteContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteContainer.swift; sourceTree = "<group>"; };
+		E7BCEEF625104C2D00E8D221 /* GenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericError.swift; sourceTree = "<group>"; };
+		E7BCEEF92510508000E8D221 /* FriendContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendContainer.swift; sourceTree = "<group>"; };
+		E7BCEEFB2510509500E8D221 /* FeedContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContainer.swift; sourceTree = "<group>"; };
 		E7C9073E25029C030095B122 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E7C9074025029EF00095B122 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		E7C9074B2502AE3F0095B122 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -152,6 +160,17 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E7BCEEF82510503B00E8D221 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E7BCEEF4250EB75800E8D221 /* NoteContainer.swift */,
+				E7BCEEF625104C2D00E8D221 /* GenericError.swift */,
+				E7BCEEF92510508000E8D221 /* FriendContainer.swift */,
+				E7BCEEFB2510509500E8D221 /* FeedContainer.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		E7C9074325029F320095B122 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +222,7 @@
 		E7EF823C24FD659A00089B94 /* Gratitude */ = {
 			isa = PBXGroup;
 			children = (
+				E7BCEEF82510503B00E8D221 /* Utils */,
 				E72B95A82504E6AD00096A8A /* Models */,
 				E72B95A32504A08F00096A8A /* Components */,
 				E7C9074425029FD30095B122 /* Controllers */,
@@ -499,15 +519,19 @@
 				E72B959C2504661800096A8A /* FriendsView.swift in Sources */,
 				E7C9074125029EF00095B122 /* CreateAccountView.swift in Sources */,
 				E72B9598250465EB00096A8A /* FeedView.swift in Sources */,
+				E7BCEEFA2510508000E8D221 /* FriendContainer.swift in Sources */,
 				E72B959425045A7E00096A8A /* ForgotPasswordView.swift in Sources */,
 				E72B959E2504663F00096A8A /* SingleNoteView.swift in Sources */,
 				E7EF824324FD659A00089B94 /* Gratitude.xcdatamodeld in Sources */,
 				E7EF823E24FD659A00089B94 /* AppDelegate.swift in Sources */,
 				E72B95C02504E87500096A8A /* Friend+CoreDataProperties.swift in Sources */,
+				E7BCEEF725104C2D00E8D221 /* GenericError.swift in Sources */,
+				E7BCEEF5250EB75900E8D221 /* NoteContainer.swift in Sources */,
 				E7EF824524FD659A00089B94 /* MainView.swift in Sources */,
 				E72B95A02504666300096A8A /* CreateNoteView.swift in Sources */,
 				E72B95A72504DA8700096A8A /* TextView.swift in Sources */,
 				E72B95BE2504E87500096A8A /* Note+CoreDataProperties.swift in Sources */,
+				E7BCEEFC2510509500E8D221 /* FeedContainer.swift in Sources */,
 				E72B95A22504668A00096A8A /* ModifyNoteView.swift in Sources */,
 				E7EF824024FD659A00089B94 /* SceneDelegate.swift in Sources */,
 				E72B95BF2504E87500096A8A /* Friend+CoreDataClass.swift in Sources */,
