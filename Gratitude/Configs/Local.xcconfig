@@ -1,0 +1,16 @@
+//
+//  Local.xcconfig
+//  Gratitude
+//
+//  Created by Nwaokocha Victor on 2020-09-19.
+//  Copyright © 2020 Nwaokocha Victor. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+
+ROOT_URL = http:/$()/localhost:9091
+
+APP_NAME = Gratitude (LOCAL)
+APP_BUNDLE_ID = victornwa.Gratitude

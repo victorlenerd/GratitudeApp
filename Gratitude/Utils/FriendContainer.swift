@@ -13,7 +13,7 @@ struct FriendContainer: Codable {
     let uuid: String
     let userID: String
     let ownerID: String
-    let status: Int
+    let status: String
         
     enum CodingKeys: String, CodingKey {
         case uuid = "uuid"
@@ -30,37 +30,50 @@ struct FriendClient {
     
     // MARK:- Search By Email
     
-    func searchByEmail(email: String, completionHandler: @escaping (_ friend: FriendContainer?, _ error: Error?) -> Void) {
+    static func searchByEmail(email: String, completionHandler: @escaping (_ friend: FriendContainer?, _ error: Error?) -> Void) {
+        var urlComponent = URLComponents(string: "\(ENVS.rootURL)/search")!
+    
+        urlComponent.queryItems = [
+            URLQueryItem(name: "email", value: email)
+        ]
         
+        var request = URLRequest(url: urlComponent.url!)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+        
+        URLSession.shared.dataTask(with: request) { (data: Data?, response, error: Error?) in
+            
+        }.resume()
     }
     
     // MARK:- Get User Friends
     
-    func getUserFriends(userID: String, completionHandler: @escaping (_ friends: [FriendContainer]?, _ error: Error?) -> Void) {
+    static func getUserFriends(userID: String, completionHandler: @escaping (_ friends: [FriendContainer]?, _ error: Error?) -> Void) {
         
     }
     
     // MARK:- Create Friend Request
     
-    func createFriendRequest(userID: String, friendID: String, completionHandler: @escaping (_ error: Error?) -> Void) {
+    static func createFriendRequest(userID: String, friendID: String, completionHandler: @escaping (_ error: Error?) -> Void) {
         
     }
     
     // MARK:- Approve Friend Request
     
-    func approveFriendRequest(friend: Friend, completionHandler: @escaping (_ error: Error?) -> Void) {
+    static func approveFriendRequest(friend: Friend, completionHandler: @escaping (_ error: Error?) -> Void) {
         
     }
     
     // MARK:- Decline Friend Request
     
-    func declineFriendRequest(friend: Friend, completionHandler: @escaping (_ error: Error?) -> Void) {
+    static func declineFriendRequest(friend: Friend, completionHandler: @escaping (_ error: Error?) -> Void) {
         
     }
     
     // MARK:- Delete Friend
     
-    func deleteFriend(uuid: String, completionHandler: @escaping (_ error: Error?) -> Void) {
+    static func deleteFriend(uuid: String, completionHandler: @escaping (_ error: Error?) -> Void) {
         
     }
 }

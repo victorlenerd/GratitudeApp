@@ -1,0 +1,15 @@
+//
+//  Prod.xcconfig
+//  Gratitude
+//
+//  Created by Nwaokocha Victor on 2020-09-19.
+//  Copyright © 2020 Nwaokocha Victor. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+ROOT_URL = https:/$()/gratitude-app-server.appengine.com
+
+APP_NAME = Gratitude
+APP_BUNDLE_ID = victornwa.Gratitude

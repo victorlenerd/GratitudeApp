@@ -33,7 +33,7 @@ struct FeedsClient {
     
     // MARK:- Get User Feeds
     
-    func getUserFeeds(userID: String, completionHandler: @escaping (_ feeds: [FeedContainer]?, _ error: Error? ) -> Void) {
+    static func getUserFeeds(userID: String, completionHandler: @escaping (_ feeds: [FeedContainer]?, _ error: Error? ) -> Void) {
             
     }
     

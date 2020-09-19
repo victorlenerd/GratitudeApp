@@ -33,8 +33,8 @@ struct NoteClient {
     
     // MARK:- Put Note Request
     
-    func putNote(note: Note, completionHandler: @escaping (_ error: Error?) -> Void ) {
-        var request = URLRequest(url: URL(string: "http://localhost:9091/notes")!)
+    static func putNote(note: Note, completionHandler: @escaping (_ error: Error?) -> Void ) {
+        var request = URLRequest(url: URL(string: "\(ENVS.rootURL)/notes")!)
         
         let noteBody = NoteContainer(
             text: note.text!,
@@ -73,13 +73,13 @@ struct NoteClient {
     
     // MARK:- Get User Notes
     
-    func getUserNotes(userID: String, completionHandler: @escaping (_ notes: [NoteContainer], _ error: Error?) -> Void) {
+    static func getUserNotes(userID: String, completionHandler: @escaping (_ notes: [NoteContainer], _ error: Error?) -> Void) {
         
     }
     
     // MARK:- Delete User Note
     
-    func getUserNotes(userID: String, noteUUID: String, completionHandler: @escaping (_ error: Error?) -> Void) {
+    static func getUserNotes(userID: String, noteUUID: String, completionHandler: @escaping (_ error: Error?) -> Void) {
         
     }
     
