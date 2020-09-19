@@ -22,12 +22,16 @@
 		E72B95BF2504E87500096A8A /* Friend+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B95BB2504E87500096A8A /* Friend+CoreDataClass.swift */; };
 		E72B95C02504E87500096A8A /* Friend+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B95BC2504E87500096A8A /* Friend+CoreDataProperties.swift */; };
 		E78E23FA7EAACF5BA3E8D56D /* Pods_GratitudeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A5422A71E762C499A5F8F5 /* Pods_GratitudeTests.framework */; };
-		E7BCEEF5250EB75900E8D221 /* NoteContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEF4250EB75800E8D221 /* NoteContainer.swift */; };
+		E7BCEEF5250EB75900E8D221 /* NoteClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEF4250EB75800E8D221 /* NoteClient.swift */; };
 		E7BCEEF725104C2D00E8D221 /* GenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEF625104C2D00E8D221 /* GenericError.swift */; };
-		E7BCEEFA2510508000E8D221 /* FriendContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEF92510508000E8D221 /* FriendContainer.swift */; };
+		E7BCEEFA2510508000E8D221 /* FriendClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEF92510508000E8D221 /* FriendClient.swift */; };
 		E7BCEEFC2510509500E8D221 /* FeedContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEFB2510509500E8D221 /* FeedContainer.swift */; };
 		E7BCEF062516864500E8D221 /* Prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E7BCEF052516864500E8D221 /* Prod.xcconfig */; };
-		E7C7276F25168AFC00B311E1 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C7276E25168AFB00B311E1 /* Environment.swift */; };
+		E7C7276F25168AFC00B311E1 /* ENVS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C7276E25168AFB00B311E1 /* ENVS.swift */; };
+		E7C7277125169ACB00B311E1 /* Note+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C7277025169ACB00B311E1 /* Note+Codable.swift */; };
+		E7C7277325169B0D00B311E1 /* Friend+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C7277225169B0D00B311E1 /* Friend+Codable.swift */; };
+		E7C727772516A64E00B311E1 /* RequestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C727762516A64E00B311E1 /* RequestClient.swift */; };
+		E7C727792516AED200B311E1 /* Feed+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C727782516AED200B311E1 /* Feed+Codable.swift */; };
 		E7C9073F25029C030095B122 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C9073E25029C030095B122 /* LoginView.swift */; };
 		E7C9074125029EF00095B122 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C9074025029EF00095B122 /* CreateAccountView.swift */; };
 		E7C9074C2502AE3F0095B122 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7C9074B2502AE3F0095B122 /* GoogleService-Info.plist */; };
@@ -81,13 +85,17 @@
 		E72B95BA2504E87500096A8A /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		E72B95BB2504E87500096A8A /* Friend+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		E72B95BC2504E87500096A8A /* Friend+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		E7BCEEF4250EB75800E8D221 /* NoteContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteContainer.swift; sourceTree = "<group>"; };
+		E7BCEEF4250EB75800E8D221 /* NoteClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteClient.swift; sourceTree = "<group>"; };
 		E7BCEEF625104C2D00E8D221 /* GenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericError.swift; sourceTree = "<group>"; };
-		E7BCEEF92510508000E8D221 /* FriendContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendContainer.swift; sourceTree = "<group>"; };
+		E7BCEEF92510508000E8D221 /* FriendClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendClient.swift; sourceTree = "<group>"; };
 		E7BCEEFB2510509500E8D221 /* FeedContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContainer.swift; sourceTree = "<group>"; };
 		E7BCEF04251685C400E8D221 /* Local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Local.xcconfig; sourceTree = "<group>"; };
 		E7BCEF052516864500E8D221 /* Prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
-		E7C7276E25168AFB00B311E1 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		E7C7276E25168AFB00B311E1 /* ENVS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ENVS.swift; sourceTree = "<group>"; };
+		E7C7277025169ACB00B311E1 /* Note+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+Codable.swift"; sourceTree = "<group>"; };
+		E7C7277225169B0D00B311E1 /* Friend+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Friend+Codable.swift"; sourceTree = "<group>"; };
+		E7C727762516A64E00B311E1 /* RequestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestClient.swift; sourceTree = "<group>"; };
+		E7C727782516AED200B311E1 /* Feed+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Feed+Codable.swift"; sourceTree = "<group>"; };
 		E7C9073E25029C030095B122 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E7C9074025029EF00095B122 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		E7C9074B2502AE3F0095B122 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -164,6 +172,9 @@
 				E72B95BA2504E87500096A8A /* Note+CoreDataProperties.swift */,
 				E72B95BB2504E87500096A8A /* Friend+CoreDataClass.swift */,
 				E72B95BC2504E87500096A8A /* Friend+CoreDataProperties.swift */,
+				E7C7277025169ACB00B311E1 /* Note+Codable.swift */,
+				E7C7277225169B0D00B311E1 /* Friend+Codable.swift */,
+				E7C727782516AED200B311E1 /* Feed+Codable.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,11 +182,12 @@
 		E7BCEEF82510503B00E8D221 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				E7BCEEF4250EB75800E8D221 /* NoteContainer.swift */,
+				E7BCEEF4250EB75800E8D221 /* NoteClient.swift */,
 				E7BCEEF625104C2D00E8D221 /* GenericError.swift */,
-				E7BCEEF92510508000E8D221 /* FriendContainer.swift */,
+				E7BCEEF92510508000E8D221 /* FriendClient.swift */,
 				E7BCEEFB2510509500E8D221 /* FeedContainer.swift */,
-				E7C7276E25168AFB00B311E1 /* Environment.swift */,
+				E7C7276E25168AFB00B311E1 /* ENVS.swift */,
+				E7C727762516A64E00B311E1 /* RequestClient.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -540,23 +552,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				E72B959C2504661800096A8A /* FriendsView.swift in Sources */,
-				E7C7276F25168AFC00B311E1 /* Environment.swift in Sources */,
+				E7C7276F25168AFC00B311E1 /* ENVS.swift in Sources */,
 				E7C9074125029EF00095B122 /* CreateAccountView.swift in Sources */,
 				E72B9598250465EB00096A8A /* FeedView.swift in Sources */,
-				E7BCEEFA2510508000E8D221 /* FriendContainer.swift in Sources */,
+				E7BCEEFA2510508000E8D221 /* FriendClient.swift in Sources */,
+				E7C727772516A64E00B311E1 /* RequestClient.swift in Sources */,
+				E7C727792516AED200B311E1 /* Feed+Codable.swift in Sources */,
 				E72B959425045A7E00096A8A /* ForgotPasswordView.swift in Sources */,
 				E72B959E2504663F00096A8A /* SingleNoteView.swift in Sources */,
 				E7EF824324FD659A00089B94 /* Gratitude.xcdatamodeld in Sources */,
+				E7C7277125169ACB00B311E1 /* Note+Codable.swift in Sources */,
 				E7EF823E24FD659A00089B94 /* AppDelegate.swift in Sources */,
 				E72B95C02504E87500096A8A /* Friend+CoreDataProperties.swift in Sources */,
 				E7BCEEF725104C2D00E8D221 /* GenericError.swift in Sources */,
-				E7BCEEF5250EB75900E8D221 /* NoteContainer.swift in Sources */,
+				E7BCEEF5250EB75900E8D221 /* NoteClient.swift in Sources */,
 				E7EF824524FD659A00089B94 /* MainView.swift in Sources */,
 				E72B95A02504666300096A8A /* CreateNoteView.swift in Sources */,
 				E72B95A72504DA8700096A8A /* TextView.swift in Sources */,
 				E72B95BE2504E87500096A8A /* Note+CoreDataProperties.swift in Sources */,
 				E7BCEEFC2510509500E8D221 /* FeedContainer.swift in Sources */,
 				E72B95A22504668A00096A8A /* ModifyNoteView.swift in Sources */,
+				E7C7277325169B0D00B311E1 /* Friend+Codable.swift in Sources */,
 				E7EF824024FD659A00089B94 /* SceneDelegate.swift in Sources */,
 				E72B95BF2504E87500096A8A /* Friend+CoreDataClass.swift in Sources */,
 				E72B9596250465CF00096A8A /* NotesView.swift in Sources */,

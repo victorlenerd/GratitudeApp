@@ -8,33 +8,16 @@
 
 import Foundation
 
-struct FeedContainer: Codable {
-    
-    let friend: FriendContainer
-    let notes: NoteContainer
-    
-    enum CodingKeys: String, CodingKey {
-        case friend
-        case notes
-    }
-    
-}
-
-struct FeedsContainer: Codable {
-    let feeds: [FeedContainer]
-    
-    enum CodingKeys: String, CodingKey {
-        case feeds
-    }
-}
-
-
 struct FeedsClient {
     
     // MARK:- Get User Feeds
     
-    static func getUserFeeds(userID: String, completionHandler: @escaping (_ feeds: [FeedContainer]?, _ error: Error? ) -> Void) {
-            
+    static func getUserFeeds(userID: String, completionHandler: @escaping (_ error: Error?, _ feeds: FeedsContainer?) -> Void) {
+        var request = URLRequest(url: URL(string: "\(ENVS.rootURL)/feeds/\(userID)")!)
+        request.httpMethod = "GET"
+        
+        let requestClient = RequestClient<FeedsContainer>()
+        requestClient.fetch(request: request, completionHandler: completionHandler)
     }
     
 }
