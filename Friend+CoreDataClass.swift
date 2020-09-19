@@ -2,7 +2,7 @@
 //  Friend+CoreDataClass.swift
 //  Gratitude
 //
-//  Created by Nwaokocha Victor on 2020-09-06.
+//  Created by Nwaokocha Victor on 2020-09-19.
 //  Copyright © 2020 Nwaokocha Victor. All rights reserved.
 //
 //

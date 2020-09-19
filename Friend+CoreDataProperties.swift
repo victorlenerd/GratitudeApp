@@ -2,7 +2,7 @@
 //  Friend+CoreDataProperties.swift
 //  Gratitude
 //
-//  Created by Nwaokocha Victor on 2020-09-06.
+//  Created by Nwaokocha Victor on 2020-09-19.
 //  Copyright © 2020 Nwaokocha Victor. All rights reserved.
 //
 //
@@ -17,8 +17,7 @@ extension Friend {
         return NSFetchRequest<Friend>(entityName: "Friend")
     }
 
+    @NSManaged public var uuid: String?
     @NSManaged public var name: String?
-    @NSManaged public var id: String?
-    @NSManaged public var photo: Data?
 
 }
