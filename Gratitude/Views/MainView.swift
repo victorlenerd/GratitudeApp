@@ -31,8 +31,6 @@ struct MainView: View {
                     Text("Notes")
             }
             .tag(3)
-        }.onAppear() {
-//            NotificationCenter.post("")
         }
     }
 }

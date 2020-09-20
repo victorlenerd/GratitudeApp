@@ -72,7 +72,7 @@ struct LoginView: View {
                 self.showAlert = true
             }
             
-            if let result = authDataResult {
+            if authDataResult != nil {
                 NotificationCenter.default.post(name: mainViewScene, object: nil)
             }
         }
