@@ -10,6 +10,8 @@ import SwiftUI
 import Firebase
 
 struct LoginView: View {
+    @EnvironmentObject var appState: AppState
+
     @State private var email: String = ""
     @State private var password: String = ""
     
@@ -19,7 +21,7 @@ struct LoginView: View {
     @State private var alertTitle: String = "Error"
     @State private var alertMessage: String = ""
     @State private var showAlert: Bool = false
-
+    
     var mainViewActiveNotification = Notification.Name("mainActive")
     
     var body: some View {
@@ -65,6 +67,8 @@ struct LoginView: View {
     // MARK:- Login
     
     func login() {
+        appState.isLoading = true
+        
         Auth.auth().signIn(withEmail: self.email, password: self.password) { (authDataResult: AuthDataResult?, error: Error?) in
             
             if let err = error {
@@ -73,8 +77,10 @@ struct LoginView: View {
             }
             
             if authDataResult != nil {
-                NotificationCenter.default.post(name: mainViewScene, object: nil)
+                appState.isLoggedIn = true
             }
+            
+            appState.isLoading = false
         }
     }
     

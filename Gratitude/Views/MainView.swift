@@ -9,28 +9,58 @@
 import SwiftUI
 
 struct MainView: View {
+    @EnvironmentObject var appState: AppState
+    
     @State private var selection = 2
 
-    var body: some View {
-        TabView(selection:$selection) {
-            FriendsView()
-                .tabItem {
-                    Image(systemName: "person.3")
-                    Text("Friends")
+    @ViewBuilder var body: some View {
+        ZStack {
+            VStack {
+                if !appState.isOnline! {
+                    Text("OFFLINE")
+                }
+                
+                if appState.isLoggedIn! {
+                    TabView(selection:$selection) {
+                        FriendsView()
+                            .tabItem {
+                                Image(systemName: "person.3")
+                                Text("Friends")
+                        }
+                        .tag(1)
+                        FeedView()
+                            .tabItem {
+                                Image(systemName: "list.dash")
+                                Text("Feed")
+                        }
+                        .tag(2)
+                        NotesView()
+                            .tabItem {
+                                Image(systemName: "square.and.pencil")
+                                Text("Notes")
+                        }
+                        .tag(3)
+                    }.onAppear() {
+                        print(appState)
+                    }
+                } else {
+                    CreateAccountView()
+                }
+            }.disabled(appState.isLoading!)
+            
+            if appState.isLoading! {
+                VStack {
+                    ActivityIndicator(isAnimating: .constant(true))
+                }
             }
-            .tag(1)
-            FeedView()
-                .tabItem {
-                    Image(systemName: "list.dash")
-                    Text("Feed")
+        }.onAppear() {
+            
+            if appState.isOnline! {
+                
+                // TODO: Check for notes that need to be uploaded
+                
             }
-            .tag(2)
-            NotesView()
-                .tabItem {
-                    Image(systemName: "square.and.pencil")
-                    Text("Notes")
-            }
-            .tag(3)
+            
         }
     }
 }

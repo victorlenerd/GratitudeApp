@@ -17,10 +17,11 @@ struct ModifyNoteView: View {
     @ObservedObject var note: Note
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             TextView(text: $text, textStyle: $textStyle)
         }
         .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .onAppear() {
             self.text = self.note.text ?? ""
         }.onDisappear() {

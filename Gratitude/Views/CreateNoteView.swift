@@ -26,7 +26,6 @@ struct CreateNoteView: View {
                 let note = Note(context: self.managedContext)
                 
                 note.createDate = Date()
-                note.isPublic = false
                 note.ownerID = Auth.auth().currentUser?.uid
                 note.text = self.text
                 note.likes = 0

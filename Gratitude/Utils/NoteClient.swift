@@ -17,7 +17,6 @@ struct NoteClient {
         
         let noteBody = NoteContainer(
             text: note.text!,
-            isPublic: note.isPublic,
             likes: note.likes,
             uuid: note.uuid!,
             views: note.views,

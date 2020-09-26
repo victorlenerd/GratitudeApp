@@ -11,7 +11,7 @@ import SwiftUI
 import Firebase
 
 
-var mainViewScene = Notification.Name("mainViewActive")
+var appState = AppState(isLoading: false, isOnline: false, isLoggedIn: false)
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -29,10 +29,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         
-        let contentView = configureFirstScreen().environment(\.managedObjectContext, context)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(self.switchToMainView(notification:)), name: mainViewScene, object: nil)
+        self.beginNetworkMonitoring()
         
+        let contentView = configureFirstScreen()
+            .environmentObject(appState)
+            .environment(\.managedObjectContext, context)
+                
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
@@ -76,22 +78,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // MARK: - Configure First Screen
     
     func configureFirstScreen() -> AnyView {
-        if (Auth.auth().currentUser == nil) {
-            print("Current USER is nil")
-            return AnyView(CreateAccountView())
+        if (Auth.auth().currentUser != nil) {
+            appState.isLoggedIn = true
         }
         
         
         return AnyView(MainView())
     }
     
-    
-    @objc func switchToMainView(notification: Notification) {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let contentView = configureFirstScreen().environment(\.managedObjectContext, context)
-        
-        self.window?.rootViewController = UIHostingController(rootView: contentView)
-        self.window?.makeKeyAndVisible()
+    func beginNetworkMonitoring() {
+        let queue = DispatchQueue(label: "Monitor")
+        monitor.start(queue: queue)
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                DispatchQueue.main.async {
+                    appState.isOnline = true
+                }
+            } else {
+                DispatchQueue.main.async {
+                    appState.isOnline = false
+                }
+            }
+        }
     }
 
 }

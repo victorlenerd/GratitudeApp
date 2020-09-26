@@ -12,6 +12,9 @@ import Firebase
 let emailFormat = "(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}" + "~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\" + "x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[\\p{L}0-9](?:[a-" + "z0-9-]*[\\p{L}0-9])?\\.)+[\\p{L}0-9](?:[\\p{L}0-9-]*[\\p{L}0-9])?|\\[(?:(?:25[0-5" + "]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-" + "9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21" + "-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])"
 
 struct CreateAccountView: View {
+    @EnvironmentObject var appState: AppState
+
+
     @State private var name: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
@@ -64,11 +67,6 @@ struct CreateAccountView: View {
                 NavigationLink(destination: LoginView(), isActive: $openLoginView){
                   Text("")
                 }.hidden()
-//                NavigationLink(destination: MainView(), isActive: $openMainView){
-//                  Text("")
-//                }
-//                .isDetailLink(false)
-//                .hidden()
             }
         }.alert(isPresented: $showAlert) {
             Alert(
@@ -81,6 +79,8 @@ struct CreateAccountView: View {
     // MARK:- Create Account
     
     func createAccount() {
+        appState.isLoading = true
+        
         Auth.auth().createUser(withEmail: self.email, password: self.password) { (authDataresult: AuthDataResult?, error: Error?) in
             
             if let err = error  {
@@ -99,9 +99,12 @@ struct CreateAccountView: View {
                         self.alertMessage = err.localizedDescription
                     }
                     
-                    NotificationCenter.default.post(name: mainViewScene, object: nil)
+                    appState.isLoading = false
+                    appState.isLoggedIn = true
                 }
             }
+            
+            appState.isLoading = false
         }
     }
     

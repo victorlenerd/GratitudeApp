@@ -12,67 +12,86 @@ import Firebase
 
 struct SingleNoteView: View {
     @Environment(\.managedObjectContext) var managedContext
+    @EnvironmentObject var appState: AppState
 
     @State private var isNoteOwner: Bool = false
     @State private var noteIsPublic: Bool = false
+    @State private var editNote: Bool = false
+    @State private var showAlert: Bool = false
     
     @ObservedObject var note: Note
     
     var body: some View {
-        NavigationView {
-            VStack(alignment: .leading) {
-                Text("\(note.updateDate!.description(with: Locale(identifier: "en_CA")))")
-                    .font(.system(size: 12))
-                    .opacity(0.6)
-                Divider()
-                HStack() {
-                    if self.isNoteOwner == true {
-                        Group {
-                            Text("\(note.likes)").font(.system(size: 16, weight: .bold))
-                            Text("Likes").font(.system(size: 12))
-                            Text("\(note.views)").font(.system(size: 16, weight: .bold))
-                            Text("Views").font(.system(size: 12))
-                        }
-                        Spacer()
-                    }
-                    
-                    if self.isNoteOwner == false {
-                        Text("\(note.likes)").font(.system(size: 16, weight: .bold))
-                        Button("Like", action: likeNote)
-                    }
-                }
-                Divider()
-                ScrollView {
-                    Text(note.text!)
-                }
-                
+        VStack(alignment: .leading) {
+            Text("\(note.updateDate!.description(with: Locale(identifier: "en_CA")))")
+                .font(.system(size: 12))
+                .opacity(0.6)
+            Divider()
+            HStack() {
                 if self.isNoteOwner == true {
                     Group {
-                        Divider()
-                        Toggle(isOn: $noteIsPublic) {
-                            Text("Make This Note Public")
-                                .font(.system(size: 12))
-                        }
+                        Text("\(note.likes)").font(.system(size: 16, weight: .bold))
+                        Text("Likes").font(.system(size: 12))
+                        Text("\(note.views)").font(.system(size: 16, weight: .bold))
+                        Text("Views").font(.system(size: 12))
                     }
+                    Spacer()
+                }
+                
+                if self.isNoteOwner == false {
+                    Text("\(note.likes)").font(.system(size: 16, weight: .bold))
+                    Button("Like", action: likeNote)
                 }
             }
-            .navigationBarHidden(true)
-            .navigationBarTitle("", displayMode: .inline)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding()
+            Divider()
+            ScrollView {
+                Text(note.text!)
+            }
+            NavigationLink(destination: ModifyNoteView(note: note), isActive: $editNote) {
+                EmptyView()
+            }.hidden()
+        }
+        .onAppear() {
+            self.isNoteOwner = Auth.auth().currentUser?.uid == note.ownerID
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Share Note"),
+                message: Text("You're about to share your note with friends"),
+                primaryButton: .default(Text("Share On Feed"), action: shareOnFeed),
+                secondaryButton: .default(Text("Share On Others"), action: shareOnOtherApps)
+            )
         }
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarItems(trailing:
-            NavigationLink(destination: ModifyNoteView(note: note)) {
+            HStack {
                 if isNoteOwner {
-                    Text("Edit Note")
+                    Button(action: { self.editNote = true }) {
+                        Image(systemName: "pencil")
+                    }
+                    Button(action: { self.showAlert = true }) {
+                        Image(systemName: "square.and.arrow.up")
+                    }
                 }
             }
         )
+        .navigationBarTitle("", displayMode: .inline)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding()
     }
     
     func likeNote() {
         print("Like note")
     }
     
+    func shareOnFeed() {
+        
+        
+        
+        print("Share note to feed")
+    }
+    
+    func shareOnOtherApps() {
+        print("Share note to social")
+    }
 }

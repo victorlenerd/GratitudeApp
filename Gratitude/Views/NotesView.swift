@@ -11,6 +11,7 @@ import Firebase
 
 
 struct NotesView: View {
+    @EnvironmentObject var appState: AppState
     @FetchRequest(
         entity: Note.entity(),
         sortDescriptors: [
@@ -18,7 +19,6 @@ struct NotesView: View {
         ]
     ) var notes: FetchedResults<Note>
     
-
     @State private var gotoLoginScreen: Bool = false
     
     var body: some View {
@@ -51,7 +51,7 @@ struct NotesView: View {
     func logout() {
         do {
             try Auth.auth().signOut()
-            NotificationCenter.default.post(name: mainViewScene, object: nil)
+            appState.isLoggedIn = false
         } catch {
             fatalError("Failed to signout \(error.localizedDescription)")
         }
