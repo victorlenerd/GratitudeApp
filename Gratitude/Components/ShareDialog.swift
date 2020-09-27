@@ -12,22 +12,16 @@ import SwiftUI
 struct ShareDialog: UIViewControllerRepresentable {
     
     var text: String
-    var callback: () -> Void
     
     func makeUIViewController(context: Context) -> UIActivityViewController {
-        return UIActivityViewController(activityItems: [text],
-                                        applicationActivities: nil)
+        let activityViewController = UIActivityViewController(activityItems: [text],
+                                                              applicationActivities: nil)
+        
+        
+        return activityViewController
     }
     
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
     }
-    
-    func makeCoordinator() -> ShareDialogCoordinator {
-        return ShareDialogCoordinator()
-    }
-    
-}
-
-class ShareDialogCoordinator {
     
 }

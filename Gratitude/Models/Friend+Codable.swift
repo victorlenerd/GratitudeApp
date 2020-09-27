@@ -23,8 +23,23 @@ struct FriendInfo: Codable {
 }
 
 
+struct FriendRequestContainer: Codable {
+    let uuid:  String
+    let userID: String
+    let ownerID: String
+    let status: String
+    
+    enum CodingKeys: String, CodingKey {
+        case uuid = "uuid"
+        case userID = "user_id"
+        case ownerID = "owner_id"
+        case status = "status"
+    }
+    
+}
+
 struct FriendRequest: Codable {
-    let uuid: String
+    let uuid:  String
     let userID: String
     let ownerID: String
     let status: String

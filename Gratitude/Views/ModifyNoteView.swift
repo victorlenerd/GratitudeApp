@@ -28,6 +28,10 @@ struct ModifyNoteView: View {
             do {
                 self.note.text = self.text
                 try self.note.managedObjectContext?.save()
+                
+                if note.uploaded {
+                    NoteClient.putNote(note: note, completionHandler: {(_, _) in })
+                }
             } catch {
                 fatalError("Failed to save note: \(error.localizedDescription)")
             }

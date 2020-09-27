@@ -25,10 +25,16 @@ struct RequestClient<A: Decodable> {
             
             let decoder = JSONDecoder()
             
+            print("[REQUEST-LOG]: URL: \(request.url?.absoluteURL) Status: \(httpStatusCode). Response: \(String(data: data!, encoding: .utf8)))" )
+            
             if httpStatusCode >= 200 && httpStatusCode < 300 {
                 do {
-                    let result = try decoder.decode(A.self, from: data!)
-                    completionHandler(nil, result)
+                    if data?.count ?? 0 > 1 {
+                        let result = try decoder.decode(A.self, from: data!)
+                        completionHandler(nil, result)
+                    } else {
+                        completionHandler(nil, nil)
+                    }
                 } catch {
                     completionHandler(GenericError.Known(message: error.localizedDescription), nil)
                 }

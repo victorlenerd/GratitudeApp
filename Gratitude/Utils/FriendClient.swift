@@ -30,7 +30,6 @@ struct FriendClient {
     
     // MARK:- Search By Email
     
-    
     static func searchByEmail(email: String, completionHandler: @escaping (_ error: Error?, _ friend: FriendInfo?) -> Void) {
         var urlComponent = URLComponents(string: "\(ENVS.rootURL)/search")!
     
@@ -62,13 +61,18 @@ struct FriendClient {
     
     // MARK:- Create Friend Request
     
-    static func createFriendRequest(friendRequest: FriendRequest, completionHandler: @escaping (_ error: Error?, _ friend: FriendContainer?) -> Void) {
-                
+    static func createFriendRequest(ownerID: String, friendInfo: FriendInfo, completionHandler: @escaping (_ error: Error?, _ friend: FriendContainer?) -> Void) {
+        let friendRequest = FriendRequest(
+                uuid: UUID().uuidString,
+                userID: friendInfo.UID,
+                ownerID: ownerID,
+                status: "1"
+            )
+        
         let request = self.makeFriendRequest(friendRequest: friendRequest)
         let requestClient = RequestClient<FriendContainer>()
         
         requestClient.fetch(request: request, completionHandler: completionHandler)
-        
     }
     
     // MARK:- Approve Friend Request

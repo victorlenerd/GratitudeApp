@@ -38,6 +38,7 @@
 		E7C9073F25029C030095B122 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C9073E25029C030095B122 /* LoginView.swift */; };
 		E7C9074125029EF00095B122 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C9074025029EF00095B122 /* CreateAccountView.swift */; };
 		E7C9074C2502AE3F0095B122 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7C9074B2502AE3F0095B122 /* GoogleService-Info.plist */; };
+		E7D9E8202520E01400E24ED1 /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E81F2520E01400E24ED1 /* TimeAgo.swift */; };
 		E7EF823E24FD659A00089B94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EF823D24FD659A00089B94 /* AppDelegate.swift */; };
 		E7EF824024FD659A00089B94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EF823F24FD659A00089B94 /* SceneDelegate.swift */; };
 		E7EF824324FD659A00089B94 /* Gratitude.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7EF824124FD659A00089B94 /* Gratitude.xcdatamodeld */; };
@@ -106,6 +107,7 @@
 		E7C9073E25029C030095B122 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E7C9074025029EF00095B122 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		E7C9074B2502AE3F0095B122 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E7D9E81F2520E01400E24ED1 /* TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgo.swift; sourceTree = "<group>"; };
 		E7EF823A24FD659A00089B94 /* Gratitude.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gratitude.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7EF823D24FD659A00089B94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7EF823F24FD659A00089B94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				E7C7277225169B0D00B311E1 /* Friend+Codable.swift */,
 				E7C727782516AED200B311E1 /* Feed+Codable.swift */,
 				E7C72782251B656A00B311E1 /* AppState.swift */,
+				E7D9E81F2520E01400E24ED1 /* TimeAgo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				E72B959E2504663F00096A8A /* SingleNoteView.swift in Sources */,
 				E7C436EB251E4765002031C5 /* ShareDialog.swift in Sources */,
 				E7EF824324FD659A00089B94 /* Gratitude.xcdatamodeld in Sources */,
+				E7D9E8202520E01400E24ED1 /* TimeAgo.swift in Sources */,
 				E7C7277125169ACB00B311E1 /* Note+Codable.swift in Sources */,
 				E7EF823E24FD659A00089B94 /* AppDelegate.swift in Sources */,
 				E7C436F9251FAE3F002031C5 /* Friend+CoreDataProperties.swift in Sources */,

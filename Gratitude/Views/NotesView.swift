@@ -27,14 +27,15 @@ struct NotesView: View {
                 List(notes, id: \.self) { (note: Note) in
                     NavigationLink(destination: SingleNoteView(note: note)) {
                         VStack(alignment: .leading) {
-                            Text("\((note.createDate?.description(with: Locale(identifier: "en_US")))!)")
+                            Text(note.createDate?.timeAgoDisplay() ?? "")
                                 .font(.system(size: 12))
                                 .opacity(0.6)
-                            Text("\(note.text!.prefix(10).description)")
-                                .padding(.top, 20)
+                            Text("\(note.text!.description)")
+                                .lineLimit(1)
+                                .padding(.top)
                         }
                     }
-                }
+                }.listStyle(PlainListStyle())
             }
             .navigationBarTitle("Notes", displayMode: .large)
             .navigationBarItems(leading:

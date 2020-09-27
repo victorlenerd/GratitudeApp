@@ -17,7 +17,11 @@ struct SingleNoteView: View {
     @State private var isNoteOwner: Bool = false
     @State private var noteIsPublic: Bool = false
     @State private var editNote: Bool = false
-    @State private var showAlert: Bool = false
+    @State private var showShareAlert: Bool = false
+    @State private var showErrorAlert: Bool = false
+    @State private var showShareSheet: Bool = false
+    @State private var alertTitle: String = ""
+    @State private var alertText: String = ""
     
     @ObservedObject var note: Note
     
@@ -54,12 +58,14 @@ struct SingleNoteView: View {
         .onAppear() {
             self.isNoteOwner = Auth.auth().currentUser?.uid == note.ownerID
         }
-        .alert(isPresented: $showAlert) {
+        .sheet(isPresented: $showShareSheet) {
+            ShareDialog(text: note.text!)
+        }
+        .alert(isPresented: $showErrorAlert) {
             Alert(
-                title: Text("Share Note"),
-                message: Text("You're about to share your note with friends"),
-                primaryButton: .default(Text("Share On Feed"), action: shareOnFeed),
-                secondaryButton: .default(Text("Share On Others"), action: shareOnOtherApps)
+                title: Text(self.alertTitle),
+                message: Text(self.alertText),
+                dismissButton: .default(Text("OK"))
             )
         }
         .navigationBarTitle("", displayMode: .inline)
@@ -69,8 +75,22 @@ struct SingleNoteView: View {
                     Button(action: { self.editNote = true }) {
                         Image(systemName: "pencil")
                     }
-                    Button(action: { self.showAlert = true }) {
+                    Button(action: {
+                        if note.uploaded {
+                            self.showShareSheet = true
+                        } else {
+                            self.showShareAlert = true
+                        }
+                    }) {
                         Image(systemName: "square.and.arrow.up")
+                    }
+                    .alert(isPresented: $showShareAlert) {
+                        Alert(
+                            title: Text("Share Note"),
+                            message: Text("You're about to share your note with friends"),
+                            primaryButton: .default(Text("Share On Feed"), action: shareOnFeed),
+                            secondaryButton: .default(Text("Share On Others"), action: shareOnOtherApps)
+                        )
                     }
                 }
             }
@@ -85,13 +105,43 @@ struct SingleNoteView: View {
     }
     
     func shareOnFeed() {
+        appState.isLoading = true
         
+        if !appState.isOnline! {
+            self.alertTitle = "Error"
+            self.alertText = "Cannot share note to feed when you're offline"
+            self.showErrorAlert = true
+            appState.isLoading = false
+            return
+        }
         
-        
-        print("Share note to feed")
+        NoteClient.putNote(note: note) { (error: Error?, note: NoteContainer?) in
+            DispatchQueue.main.async {
+                if let err = error {
+                    self.alertTitle = "Error"
+                    self.alertText = err.localizedDescription
+                    self.showErrorAlert = true
+                    appState.isLoading = false
+                    return
+                }
+                    
+                self.note.uploaded = true
+                
+                do {
+                    try managedContext.save()
+                } catch {
+                    fatalError("Error occured while trying to upload note \(error.localizedDescription)")
+                }
+                
+                self.alertTitle = "Success"
+                self.alertText = "Note shared on feed"
+                appState.isLoading = false
+                self.showErrorAlert = true
+            }
+        }
     }
     
     func shareOnOtherApps() {
-        print("Share note to social")
+        self.showShareAlert = true
     }
 }

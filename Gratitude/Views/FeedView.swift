@@ -10,7 +10,12 @@ import SwiftUI
 
 struct FeedView: View {
     var body: some View {
-        Text("Feeds View")
+        NavigationView {
+            VStack {
+                Text("Feeds View")
+            }
+            .navigationBarTitle("Feed", displayMode: .large)
+        }
     }
 }
 
