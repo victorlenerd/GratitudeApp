@@ -61,26 +61,35 @@ struct FriendClient {
     
     // MARK:- Create Friend Request
     
-    static func createFriendRequest(ownerID: String, friendInfo: FriendInfo, completionHandler: @escaping (_ error: Error?, _ friend: FriendContainer?) -> Void) {
+    static func createFriendRequest(ownerID: String, friendInfo: FriendInfo, completionHandler: @escaping (_ error: Error?, _ friend: FriendRequest?) -> Void) {
         let friendRequest = FriendRequest(
                 uuid: UUID().uuidString,
                 userID: friendInfo.UID,
                 ownerID: ownerID,
-                status: "1"
+                status: FriendRequestStatus.Pending.rawValue,
+                createdDate: Date().debugDescription
             )
         
         let request = self.makeFriendRequest(friendRequest: friendRequest)
-        let requestClient = RequestClient<FriendContainer>()
+        let requestClient = RequestClient<FriendRequest>()
         
         requestClient.fetch(request: request, completionHandler: completionHandler)
     }
     
     // MARK:- Approve Friend Request
     
-    static func approveFriendRequest(friendRequest: FriendRequest, completionHandler: @escaping (_ error: Error?, _ friend: FriendContainer?) -> Void) {
+    static func approveFriendRequest(friendRequest: FriendRequest, completionHandler: @escaping (_ error: Error?, _ friend: FriendRequest?) -> Void) {
         
-        let request = self.makeFriendRequest(friendRequest: friendRequest)
-        let requestClient = RequestClient<FriendContainer>()
+        let approvedRequest = FriendRequest(
+            uuid: friendRequest.uuid,
+            userID: friendRequest.userID,
+            ownerID: friendRequest.ownerID,
+            status: FriendRequestStatus.Approved.rawValue,
+            createdDate: friendRequest.createdDate
+        )
+        
+        let request = self.makeFriendRequest(friendRequest: approvedRequest)
+        let requestClient = RequestClient<FriendRequest>()
         
         requestClient.fetch(request: request, completionHandler: completionHandler)
         
@@ -88,10 +97,10 @@ struct FriendClient {
     
     // MARK:- Decline Friend Request
     
-    static func declineFriendRequest(friendRequest: FriendRequest, completionHandler: @escaping (_ error: Error?, _ friend: FriendContainer?) -> Void) {
+    static func declineFriendRequest(friendRequest: FriendRequest, completionHandler: @escaping (_ error: Error?, _ friend: FriendRequest?) -> Void) {
 
         let request = self.makeFriendRequest(friendRequest: friendRequest)
-        let requestClient = RequestClient<FriendContainer>()
+        let requestClient = RequestClient<FriendRequest>()
         
         requestClient.fetch(request: request, completionHandler: completionHandler)
         

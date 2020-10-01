@@ -21,13 +21,11 @@ struct FriendsView: View {
     @State private var alertMessage: String = ""
         
     @State private var showRequestAlert: Bool = false
-    
     @State private var friendInfo: FriendInfo?
+    @State private var friends: [FriendContainer] = []
     
-    @FetchRequest(
-        entity: Friend.entity(),
-        sortDescriptors: []
-    ) var friends: FetchedResults<Friend>
+    @State
+    private var userID: String = ""
     
     let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
     
@@ -35,8 +33,16 @@ struct FriendsView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 HStack {
-                    TextField("Filter or search by email", text: $searchText)
-                        .autocapitalization(.none)
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .opacity(0.5)
+                        TextField("Type an email to find a friend", text: $searchText)
+                            .autocapitalization(.none)
+                            .font(.system(size: 12, weight: .light))
+                            .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
+                            .background(Color.black.opacity(0.1))
+                            .cornerRadius(20)
+                    }
                     if self.emailPredicate.evaluate(with: self.searchText) && !self.isSearchingForFriend {
                         Button("Search", action: searchByEmail)
                     }
@@ -50,13 +56,56 @@ struct FriendsView: View {
                         })
                     }
                 }
+                .padding(.leading)
+                .padding(.trailing)
                 .disabled(appState.isLoading!)
                 if !isSearchingForFriend {
                     VStack {
                         if friends.count > 0 {
-                            List() {
-                                
+                            List {
+                                ForEach(self.friends, id: \.self) { (friend: FriendContainer) in
+                                    HStack {
+                                        VStack(alignment: .leading) {
+                                            Text(friend.info.DisplayName)
+                                            Text(friend.info.Email)
+                                                .font(.system(size: 10, weight: .light))
+                                        }
+                                        .padding(.top, 10)
+                                        .padding(.bottom, 10)
+                                        Spacer()
+                                        
+                                        if friend.request.status == FriendRequestStatus.Pending.rawValue && friend.request.userID == userID {
+                                            Group {
+                                                Button(action: {}) {
+                                                    Text("Decline")
+                                                        .font(.system(size: 12, weight: .light))
+                                                        .foregroundColor(Color.red)
+                                                }
+                                                .padding(.trailing, 20)
+                                                Button(action: { self.approveFriendRequest(friendContainer: friend) }) {
+                                                    Text("Approve")
+                                                        .font(.system(size: 12, weight: .light))
+                                                        .foregroundColor(Color.white)
+                                                }
+                                                .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
+                                                .background(Color.blue)
+                                                .cornerRadius(5)
+                                            }
+                                        }
+                                        
+                                        if friend.request.status == FriendRequestStatus.Pending.rawValue && friend.request.userID != userID {
+                                            Text("Pending")
+                                                .padding(.all, 5)
+                                                .background(Color.black.opacity(0.1))
+                                                .font(.system(size: 12, weight: .light))
+                                                .foregroundColor(Color.black)
+                                                .cornerRadius(5)
+                                        }
+                                    }
+                                }
+                                .buttonStyle(BorderlessButtonStyle())
                             }
+                            .listStyle(PlainListStyle())
                         } else {
                             Text("You don't have any friends yet! ;)")
                                 .fontWeight(.heavy)
@@ -72,35 +121,26 @@ struct FriendsView: View {
                         Text(self.friendInfo?.Email ?? "")
                             .fontWeight(.light)
                             .padding(.bottom, 50)
-                        Button("Add Friend", action: sendFriendRequest).alert(isPresented: $showRequestAlert) {
-                            Alert(
-                                title: Text(self.alertTitle),
-                                message: Text(self.alertMessage),
-                                dismissButton: .default(Text("OK"))
-                            )
-                        }
-                    }
-                    .alert(isPresented: self.$showSearchAlert) {
-                        Alert(
-                            title: Text(self.alertTitle),
-                            message: Text(self.alertMessage),
-                            dismissButton: .default(Text("OK"), action: { self.isSearchingForFriend = false })
-                        )
+                        Button("Add Friend", action: sendFriendRequest)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
             }
+            .alert(isPresented: self.$showSearchAlert) {
+                Alert(
+                    title: Text(self.alertTitle),
+                    message: Text(self.alertMessage),
+                    dismissButton: .default(Text("OK"), action: {
+                        self.isSearchingForFriend = false
+                        self.searchText = ""
+                        self.friendInfo = nil
+                        self.fetchRequest()
+                    })
+                )
+            }
             .onAppear() {
-                FriendClient.getUserFriends(userID: Auth.auth().currentUser?.uid ?? "") { (_ error: Error?, _ friends: [FriendContainer]?) in
-                    if let err = error {
-                        self.alertTitle = "Error"
-                        self.alertMessage = err.localizedDescription
-                        self.showSearchAlert = true
-                        return
-                    }
-                    
-                    print(friends)
-                }
+                self.userID = Auth.auth().currentUser?.uid ?? ""
+                self.fetchRequest()
             }
             .navigationBarTitle("Friends", displayMode: .large)
             .padding()
@@ -113,15 +153,12 @@ struct FriendsView: View {
         FriendClient.searchByEmail(email: self.searchText) { (_ error: Error?, _ friend: FriendInfo?) in
             DispatchQueue.main.async {
                 if let err = error {
-                    print(error)
                     appState.isLoading = false
                     self.alertTitle = "Error"
                     self.alertMessage = err.localizedDescription
                     self.showSearchAlert = true
                     return
                 }
-                
-                print("friend", friend)
                 
                 if let ff = friend {
                     self.appState.isLoading = false
@@ -132,30 +169,73 @@ struct FriendsView: View {
     }
     
     func sendFriendRequest() {
+        let sentRequest = friends.filter { (friend: FriendContainer) -> Bool in
+            if friend.request.status == FriendRequestStatus.Pending.rawValue && friend.info.UID == self.friendInfo?.UID {
+                return true
+            }
+            
+            return false
+        }
+        
+        if !sentRequest.isEmpty {
+            self.alertTitle = "Error"
+            self.alertMessage = "You already sent a request to this \(self.friendInfo?.DisplayName ?? "")"
+            self.showSearchAlert = true
+            return
+        }
+        
         appState.isLoading = true
         
-        FriendClient.createFriendRequest(ownerID: Auth.auth().currentUser?.uid ?? "", friendInfo: self.friendInfo!) { (error: Error?, friendRequest: FriendContainer?) in
+        FriendClient.createFriendRequest(ownerID: Auth.auth().currentUser?.uid ?? "", friendInfo: self.friendInfo!) { (error: Error?, friendRequest: FriendRequest?) in
             DispatchQueue.main.async {
                 if let err = error {
+                    appState.isLoading = false
                     self.alertTitle = "Error"
                     self.alertMessage = err.localizedDescription
                     self.showSearchAlert = true
-                    self.isSearchingForFriend = false
-                    appState.isLoading = false
                     return
                 }
                 
-                self.alertTitle = "Success"
-                self.alertMessage = "Successfully sent friend request to \(String(describing: self.friendInfo?.DisplayName))"
-                self.showSearchAlert = true
                 appState.isLoading = false
+                self.alertTitle = "Success"
+                self.alertMessage = "Successfully sent friend request to \(self.friendInfo?.DisplayName ?? "")"
+                self.showSearchAlert = true
             }
         }
     }
-}
-
-struct FriendsView_Previews: PreviewProvider {
-    static var previews: some View {
-        FriendsView()
+    
+    func approveFriendRequest(friendContainer: FriendContainer) {
+        appState.isLoading = true
+        FriendClient.approveFriendRequest(friendRequest: friendContainer.request) { (error: Error?, _: FriendRequest?) in
+            DispatchQueue.main.async {
+                if let err = error {
+                    print("err", err)
+                    appState.isLoading = false
+                    self.alertTitle = "Error"
+                    self.alertMessage = err.localizedDescription
+                    self.showSearchAlert = true
+                    return
+                }
+                
+                appState.isLoading = false
+                self.fetchRequest()
+            }
+        }
+    }
+    
+    func fetchRequest() {
+        FriendClient.getUserFriends(userID: Auth.auth().currentUser?.uid ?? "") { (_ error: Error?, _ friends: [FriendContainer]?) in
+            DispatchQueue.main.async {
+                if let err = error {
+                    print("fetch-error", err)
+                    self.alertTitle = "Error"
+                    self.alertMessage = err.localizedDescription
+                    return
+                }
+                
+                self.friends = []
+                self.friends = friends ?? []
+            }
+        }
     }
 }

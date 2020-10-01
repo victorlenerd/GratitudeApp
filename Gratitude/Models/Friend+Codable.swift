@@ -8,7 +8,13 @@
 
 import Foundation
 
-struct FriendInfo: Codable {
+enum FriendRequestStatus: String {
+    case Pending = "1"
+    case Declined = "2"
+    case Approved = "3"
+}
+
+struct FriendInfo: Hashable, Codable {
     let UUID: String
     let UID: String
     let DisplayName: String
@@ -22,44 +28,34 @@ struct FriendInfo: Codable {
     }
 }
 
-
-struct FriendRequestContainer: Codable {
+struct FriendRequest: Hashable, Codable {
     let uuid:  String
     let userID: String
     let ownerID: String
-    let status: String
+    var status: String
+    let createdDate: String
     
     enum CodingKeys: String, CodingKey {
         case uuid = "uuid"
         case userID = "user_id"
-        case ownerID = "owner_id"
         case status = "status"
+        case ownerID = "owner_id"
+        case createdDate = "created_date"
     }
     
 }
 
-struct FriendRequest: Codable {
-    let uuid:  String
-    let userID: String
-    let ownerID: String
-    let status: String
-    
-    enum CodingKeys: String, CodingKey {
-        case uuid = "uuid"
-        case userID = "user_id"
-        case ownerID = "owner_id"
-        case status = "status"
+struct FriendContainer: Hashable, Codable {
+    static func == (lhs: FriendContainer, rhs: FriendContainer) -> Bool {
+        lhs.info.UID == rhs.info.UID
     }
     
-}
-
-struct FriendContainer: Codable {
     let request: FriendRequest
-    let friend: FriendInfo
+    let info: FriendInfo
     
     enum CodingKeys: String, CodingKey {
         case request = "request"
-        case friend = "friend"
+        case info = "info"
     }
     
 }
