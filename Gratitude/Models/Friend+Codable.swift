@@ -15,6 +15,10 @@ enum FriendRequestStatus: String {
 }
 
 struct FriendInfo: Hashable, Codable {
+    static func == (lhs: FriendInfo, rhs: FriendInfo) -> Bool {
+        lhs.UUID == rhs.UUID
+    }
+    
     let UUID: String
     let UID: String
     let DisplayName: String
@@ -29,6 +33,10 @@ struct FriendInfo: Hashable, Codable {
 }
 
 struct FriendRequest: Hashable, Codable {
+    static func == (lhs: FriendRequest, rhs: FriendRequest) -> Bool {
+        lhs.uuid == rhs.uuid
+    }
+    
     let uuid:  String
     let userID: String
     let ownerID: String
@@ -47,7 +55,7 @@ struct FriendRequest: Hashable, Codable {
 
 struct FriendContainer: Hashable, Codable {
     static func == (lhs: FriendContainer, rhs: FriendContainer) -> Bool {
-        lhs.info.UID == rhs.info.UID
+        lhs.request.uuid == rhs.request.uuid && lhs.info.UUID == rhs.info.UUID
     }
     
     let request: FriendRequest

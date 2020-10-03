@@ -21,7 +21,8 @@ struct NoteClient {
             likes: note.likes,
             uuid: note.uuid!,
             views: note.views,
-            ownerID: note.ownerID!
+            ownerID: note.ownerID!, 
+            createDate: nil
         )
         
         let encodedBody = try! JSONEncoder().encode(noteBody)

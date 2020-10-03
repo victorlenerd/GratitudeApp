@@ -7,20 +7,61 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct FeedView: View {
+    
+    @State private var currentUserID: String = ""
+    @State private var feeds: [FeedContainer] = []
+    
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Feeds View")
-            }
+            List {
+                ForEach(feeds, id: \.self) { (feed: FeedContainer) in
+                    Section(header: Text("\(feed.friend.DisplayName)")) {
+                        ForEach(feed.notes!, id: \.self) { (note: NoteContainer) in
+                            NavigationLink(destination: FeedNoteView(note: note)) {
+                                HStack {
+                                    Text(self.getDate(isoDate: note.createDate!))
+                                    Text("\(note.text)")
+                                        .lineLimit(2)
+                                        .padding(.top, 10)
+                                        .padding(.bottom, 10)
+                                }
+                            }
+                        }
+                    }
+                }
+            }.listStyle(GroupedListStyle())
             .navigationBarTitle("Feed", displayMode: .large)
+        }.onAppear() {
+            self.currentUserID = Auth.auth().currentUser?.uid ?? ""
+            self.fetchFeeds()
         }
     }
 }
 
-struct FeedView_Previews: PreviewProvider {
-    static var previews: some View {
-        FeedView()
+
+extension FeedView {
+    
+    func fetchFeeds() {
+        FeedsClient.getUserFeeds(userID: self.currentUserID) { (error: Error?, feeds: [FeedContainer]?) in
+            if let err = error {
+                print(err)
+                return
+            }
+            
+            self.feeds = feeds!
+        }
     }
+    
+    func getDate(isoDate: String) -> String {
+        let dateFormatter = ISO8601DateFormatter()
+        let date = dateFormatter.date(from:isoDate)
+    
+        print("isoDate", isoDate)
+        
+        return date?.timeAgoDisplay() ?? ""
+    }
+    
 }

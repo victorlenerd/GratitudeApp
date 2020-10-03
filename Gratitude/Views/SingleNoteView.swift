@@ -27,27 +27,6 @@ struct SingleNoteView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("\(note.updateDate!.description(with: Locale(identifier: "en_CA")))")
-                .font(.system(size: 12))
-                .opacity(0.6)
-            Divider()
-            HStack() {
-                if self.isNoteOwner == true {
-                    Group {
-                        Text("\(note.likes)").font(.system(size: 16, weight: .bold))
-                        Text("Likes").font(.system(size: 12))
-                        Text("\(note.views)").font(.system(size: 16, weight: .bold))
-                        Text("Views").font(.system(size: 12))
-                    }
-                    Spacer()
-                }
-                
-                if self.isNoteOwner == false {
-                    Text("\(note.likes)").font(.system(size: 16, weight: .bold))
-                    Button("Like", action: likeNote)
-                }
-            }
-            Divider()
             ScrollView {
                 Text(note.text!)
             }
@@ -100,9 +79,13 @@ struct SingleNoteView: View {
         .padding()
     }
     
-    func likeNote() {
-        print("Like note")
-    }
+}
+
+// MARK:- Methods
+
+extension SingleNoteView {
+    
+    // MARK:- Share Note On Feed
     
     func shareOnFeed() {
         appState.isLoading = true
@@ -141,7 +124,10 @@ struct SingleNoteView: View {
         }
     }
     
+    // MARK:- Share Note On Other Notes
+    
     func shareOnOtherApps() {
         self.showShareAlert = true
     }
+    
 }

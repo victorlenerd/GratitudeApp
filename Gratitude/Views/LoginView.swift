@@ -63,6 +63,11 @@ struct LoginView: View {
                 dismissButton: .default(Text("Got it!")))
         }
     }
+}
+
+// MARK:- Methods
+
+extension LoginView {
     
     // MARK:- Login
     
@@ -85,9 +90,12 @@ struct LoginView: View {
     }
     
     // MARK:- Open Reset Password Screen
+    
     func openResetPasswordScreen() {
         self.openResetPassword = true
     }
+    
+    // MARK:- Validate Text Inputs
     
     func validateInputs() -> Bool {
         if self.password.count < 6 {
@@ -101,11 +109,5 @@ struct LoginView: View {
         }
 
         return true
-    }
-}
-
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
+    }    
 }

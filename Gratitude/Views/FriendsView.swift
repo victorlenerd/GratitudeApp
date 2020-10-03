@@ -33,20 +33,25 @@ struct FriendsView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 HStack {
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                            .opacity(0.5)
-                        TextField("Type an email to find a friend", text: $searchText)
-                            .autocapitalization(.none)
-                            .font(.system(size: 12, weight: .light))
-                            .padding(EdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10))
-                            .background(Color.black.opacity(0.1))
-                            .cornerRadius(20)
+                    ZStack {
+                        HStack {
+                            TextField("Type an email to find a friend", text: $searchText)
+                                .autocapitalization(.none)
+                                .font(.system(size: 12, weight: .light))
+                                .padding(EdgeInsets(top: 8, leading: 30, bottom: 8, trailing: 10))
+                                .background(Color.black.opacity(0.1))
+                                .cornerRadius(20)
+                            if self.emailPredicate.evaluate(with: self.searchText) && !self.isSearchingForFriend {
+                                Button("Search", action: searchByEmail)
+                            }
+                        }
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .opacity(0.5)
+                                .padding(.leading, 10)
+                            Spacer()
+                        }
                     }
-                    if self.emailPredicate.evaluate(with: self.searchText) && !self.isSearchingForFriend {
-                        Button("Search", action: searchByEmail)
-                    }
-                    
                     if self.emailPredicate.evaluate(with: self.searchText)
                         && self.isSearchingForFriend
                         && !appState.isLoading! {
@@ -73,11 +78,10 @@ struct FriendsView: View {
                                         .padding(.top, 10)
                                         .padding(.bottom, 10)
                                         Spacer()
-                                        
                                         if friend.request.status == FriendRequestStatus.Pending.rawValue && friend.request.userID == userID {
                                             Group {
-                                                Button(action: {}) {
-                                                    Text("Decline")
+                                                Button(action: { self.deleteFriendRequest(friendContainer: friend) }) {
+                                                    Text("Delete")
                                                         .font(.system(size: 12, weight: .light))
                                                         .foregroundColor(Color.red)
                                                 }
@@ -100,6 +104,15 @@ struct FriendsView: View {
                                                 .font(.system(size: 12, weight: .light))
                                                 .foregroundColor(Color.black)
                                                 .cornerRadius(5)
+                                        }
+                                        
+                                        if friend.request.status == FriendRequestStatus.Approved.rawValue {
+                                            Button(action: { self.deleteFriendRequest(friendContainer: friend) }) {
+                                                Text("Delete")
+                                                    .font(.system(size: 12, weight: .light))
+                                                    .foregroundColor(Color.red)
+                                            }
+                                            .padding(.trailing, 20)
                                         }
                                     }
                                 }
@@ -146,6 +159,14 @@ struct FriendsView: View {
             .padding()
         }
     }
+
+}
+
+// MARK:- Methods
+
+extension FriendsView {
+    
+    // MARK: - Search For Friends By Email
     
     func searchByEmail() {
         appState.isLoading = true
@@ -167,6 +188,8 @@ struct FriendsView: View {
             }
         }
     }
+    
+    // MARK: - Send Friend Request
     
     func sendFriendRequest() {
         let sentRequest = friends.filter { (friend: FriendContainer) -> Bool in
@@ -204,6 +227,8 @@ struct FriendsView: View {
         }
     }
     
+    // MARK: - Approve Friend Request
+    
     func approveFriendRequest(friendContainer: FriendContainer) {
         appState.isLoading = true
         FriendClient.approveFriendRequest(friendRequest: friendContainer.request) { (error: Error?, _: FriendRequest?) in
@@ -223,13 +248,34 @@ struct FriendsView: View {
         }
     }
     
-    func fetchRequest() {
-        FriendClient.getUserFriends(userID: Auth.auth().currentUser?.uid ?? "") { (_ error: Error?, _ friends: [FriendContainer]?) in
+    // MARK: - Delete Friend Request
+    
+    func deleteFriendRequest(friendContainer: FriendContainer) {
+        appState.isLoading = true
+        FriendClient.deleteFriend(uuid: friendContainer.request.uuid) { (error: Error?, _) in
             DispatchQueue.main.async {
                 if let err = error {
-                    print("fetch-error", err)
                     self.alertTitle = "Error"
                     self.alertMessage = err.localizedDescription
+                    self.showSearchAlert = true
+                    return
+                }
+                
+                appState.isLoading = false
+                self.fetchRequest()
+            }
+        }
+    }
+    
+    // MARK: - Fetch All Friends Data
+    
+    func fetchRequest() {
+        FriendClient.getUserFriends(userID: Auth.auth().currentUser?.uid ?? "") { (_ error: Error?, _ friends: [FriendContainer]?) in
+            DispatchQueue.main.sync {
+                if let err = error {
+                    self.alertTitle = "Error"
+                    self.alertMessage = err.localizedDescription
+                    self.showSearchAlert = true
                     return
                 }
                 
@@ -238,4 +284,5 @@ struct FriendsView: View {
             }
         }
     }
+    
 }

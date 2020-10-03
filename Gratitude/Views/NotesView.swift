@@ -20,34 +20,68 @@ struct NotesView: View {
     ) var notes: FetchedResults<Note>
     
     @State private var gotoLoginScreen: Bool = false
+    @State private var createNewNote: Bool = false
     
     var body: some View {
         NavigationView {
-            VStack {
-                List(notes, id: \.self) { (note: Note) in
-                    NavigationLink(destination: SingleNoteView(note: note)) {
-                        VStack(alignment: .leading) {
-                            Text(note.createDate?.timeAgoDisplay() ?? "")
-                                .font(.system(size: 12))
-                                .opacity(0.6)
-                            Text("\(note.text!.description)")
-                                .lineLimit(1)
-                                .padding(.top)
+            ZStack {
+                VStack {
+                    List(notes, id: \.self) { (note: Note) in
+                        NavigationLink(destination: SingleNoteView(note: note)) {
+                            VStack(alignment: .leading) {
+                                Text(note.createDate?.timeAgoDisplay() ?? "")
+                                    .font(.system(size: 12))
+                                    .opacity(0.6)
+                                Text("\(note.text!.description)")
+                                    .lineLimit(1)
+                                    .padding(.top)
+                            }
                         }
+                    }.listStyle(PlainListStyle())
+                }
+                .navigationBarTitle("Notes", displayMode: .large)
+                .navigationBarItems(
+                trailing:
+                    Button(action: logout) {
+                        Text("Log Out")
+                    })
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        NavigationLink(destination: CreateNoteView(), isActive: self.$createNewNote) {
+                            EmptyView()
+                        }
+                            
+                        Button(action: self.addNewNote) {
+                            Image(systemName: "plus")
+                        }
+                        .padding()
+                        .background(Color.blue.opacity(0.75))
+                        .foregroundColor(.white)
+                        .font(.title)
+                        .clipShape(Circle())
+                        .padding(.trailing)
+                        .padding(.bottom)
+                        .shadow(radius: 10)
                     }
-                }.listStyle(PlainListStyle())
+                }
             }
-            .navigationBarTitle("Notes", displayMode: .large)
-            .navigationBarItems(leading:
-               NavigationLink(destination: CreateNoteView()) {
-                   Text("Create Note")
-                },
-            trailing:
-                Button(action: logout) {
-                    Text("Log Out")
-                })
         }
     }
+}
+
+// MARK:- Methods
+
+extension NotesView {
+    
+    // MARK:- Create New Note
+    
+    func addNewNote() {
+        self.createNewNote = true
+    }
+    
+    // MARK:- Logout
     
     func logout() {
         do {
@@ -57,4 +91,5 @@ struct NotesView: View {
             fatalError("Failed to signout \(error.localizedDescription)")
         }
     }
+    
 }

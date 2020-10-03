@@ -12,11 +12,11 @@ struct FeedsClient {
     
     // MARK:- Get User Feeds
     
-    static func getUserFeeds(userID: String, completionHandler: @escaping (_ error: Error?, _ feeds: FeedsContainer?) -> Void) {
+    static func getUserFeeds(userID: String, completionHandler: @escaping (_ error: Error?, _ feeds: [FeedContainer]?) -> Void) {
         var request = URLRequest(url: URL(string: "\(ENVS.rootURL)/feeds/\(userID)")!)
         request.httpMethod = "GET"
         
-        let requestClient = RequestClient<FeedsContainer>()
+        let requestClient = RequestClient<[FeedContainer]>()
         requestClient.fetch(request: request, completionHandler: completionHandler)
     }
     

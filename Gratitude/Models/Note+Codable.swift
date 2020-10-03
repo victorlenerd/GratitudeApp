@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct NoteContainer: Codable {
+struct NoteContainer: Hashable, Codable {
     
     let text: String
     let isPublic: Bool
@@ -16,6 +16,7 @@ struct NoteContainer: Codable {
     let uuid: UUID
     let views: Int64
     let ownerID: String
+    let createDate: String?
     
     enum CodingKeys: String, CodingKey {
         case uuid = "uuid"
@@ -24,6 +25,7 @@ struct NoteContainer: Codable {
         case likes = "likes"
         case views = "views"
         case ownerID = "owner_id"
+        case createDate = "create_date"
     }
 
 }

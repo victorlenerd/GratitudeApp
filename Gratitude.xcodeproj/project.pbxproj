@@ -21,7 +21,7 @@
 		E7BCEEF5250EB75900E8D221 /* NoteClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEF4250EB75800E8D221 /* NoteClient.swift */; };
 		E7BCEEF725104C2D00E8D221 /* GenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEF625104C2D00E8D221 /* GenericError.swift */; };
 		E7BCEEFA2510508000E8D221 /* FriendClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEF92510508000E8D221 /* FriendClient.swift */; };
-		E7BCEEFC2510509500E8D221 /* FeedContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEFB2510509500E8D221 /* FeedContainer.swift */; };
+		E7BCEEFC2510509500E8D221 /* FeedClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEFB2510509500E8D221 /* FeedClient.swift */; };
 		E7C436DE251BC394002031C5 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C436DD251BC394002031C5 /* LoadingIndicator.swift */; };
 		E7C436E3251D12DA002031C5 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C436E2251D12DA002031C5 /* NetworkMonitor.swift */; };
 		E7C436EB251E4765002031C5 /* ShareDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C436EA251E4765002031C5 /* ShareDialog.swift */; };
@@ -39,6 +39,7 @@
 		E7C9074125029EF00095B122 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C9074025029EF00095B122 /* CreateAccountView.swift */; };
 		E7C9074C2502AE3F0095B122 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E7C9074B2502AE3F0095B122 /* GoogleService-Info.plist */; };
 		E7D9E8202520E01400E24ED1 /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E81F2520E01400E24ED1 /* TimeAgo.swift */; };
+		E7D9E82825284E5F00E24ED1 /* FeedNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7D9E82725284E5F00E24ED1 /* FeedNoteView.swift */; };
 		E7EF823E24FD659A00089B94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EF823D24FD659A00089B94 /* AppDelegate.swift */; };
 		E7EF824024FD659A00089B94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EF823F24FD659A00089B94 /* SceneDelegate.swift */; };
 		E7EF824324FD659A00089B94 /* Gratitude.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7EF824124FD659A00089B94 /* Gratitude.xcdatamodeld */; };
@@ -88,7 +89,7 @@
 		E7BCEEF4250EB75800E8D221 /* NoteClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteClient.swift; sourceTree = "<group>"; };
 		E7BCEEF625104C2D00E8D221 /* GenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericError.swift; sourceTree = "<group>"; };
 		E7BCEEF92510508000E8D221 /* FriendClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendClient.swift; sourceTree = "<group>"; };
-		E7BCEEFB2510509500E8D221 /* FeedContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContainer.swift; sourceTree = "<group>"; };
+		E7BCEEFB2510509500E8D221 /* FeedClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedClient.swift; sourceTree = "<group>"; };
 		E7BCEF04251685C400E8D221 /* Local.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Local.xcconfig; sourceTree = "<group>"; };
 		E7BCEF052516864500E8D221 /* Prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		E7C436DD251BC394002031C5 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
@@ -108,6 +109,7 @@
 		E7C9074025029EF00095B122 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		E7C9074B2502AE3F0095B122 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7D9E81F2520E01400E24ED1 /* TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgo.swift; sourceTree = "<group>"; };
+		E7D9E82725284E5F00E24ED1 /* FeedNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedNoteView.swift; sourceTree = "<group>"; };
 		E7EF823A24FD659A00089B94 /* Gratitude.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gratitude.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7EF823D24FD659A00089B94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E7EF823F24FD659A00089B94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -198,7 +200,7 @@
 				E7BCEEF4250EB75800E8D221 /* NoteClient.swift */,
 				E7BCEEF625104C2D00E8D221 /* GenericError.swift */,
 				E7BCEEF92510508000E8D221 /* FriendClient.swift */,
-				E7BCEEFB2510509500E8D221 /* FeedContainer.swift */,
+				E7BCEEFB2510509500E8D221 /* FeedClient.swift */,
 				E7C7276E25168AFB00B311E1 /* ENVS.swift */,
 				E7C727762516A64E00B311E1 /* RequestClient.swift */,
 				E7C436E2251D12DA002031C5 /* NetworkMonitor.swift */,
@@ -228,6 +230,7 @@
 				E72B959D2504663F00096A8A /* SingleNoteView.swift */,
 				E72B959F2504666300096A8A /* CreateNoteView.swift */,
 				E72B95A12504668A00096A8A /* ModifyNoteView.swift */,
+				E7D9E82725284E5F00E24ED1 /* FeedNoteView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -589,9 +592,10 @@
 				E7C436E3251D12DA002031C5 /* NetworkMonitor.swift in Sources */,
 				E72B95A72504DA8700096A8A /* TextView.swift in Sources */,
 				E7C436DE251BC394002031C5 /* LoadingIndicator.swift in Sources */,
-				E7BCEEFC2510509500E8D221 /* FeedContainer.swift in Sources */,
+				E7BCEEFC2510509500E8D221 /* FeedClient.swift in Sources */,
 				E72B95A22504668A00096A8A /* ModifyNoteView.swift in Sources */,
 				E7C72783251B656A00B311E1 /* AppState.swift in Sources */,
+				E7D9E82825284E5F00E24ED1 /* FeedNoteView.swift in Sources */,
 				E7C7277325169B0D00B311E1 /* Friend+Codable.swift in Sources */,
 				E7EF824024FD659A00089B94 /* SceneDelegate.swift in Sources */,
 				E72B9596250465CF00096A8A /* NotesView.swift in Sources */,

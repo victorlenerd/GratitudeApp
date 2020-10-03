@@ -53,14 +53,6 @@ struct MainView: View {
                     ActivityIndicator(isAnimating: .constant(true))
                 }
             }
-        }.onAppear() {
-            
-            if appState.isOnline! {
-                
-                // TODO: Check for notes that need to be uploaded
-                
-            }
-            
         }
     }
 }

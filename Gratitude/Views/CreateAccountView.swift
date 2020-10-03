@@ -26,8 +26,6 @@ struct CreateAccountView: View {
     @State private var alertTitle: String = ""
     @State private var alertMessage: String = ""
     
-    var mainViewActiveNotification = Notification.Name("mainActive")
-    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 10) {
@@ -75,6 +73,13 @@ struct CreateAccountView: View {
                 dismissButton: .default(Text("Got it!")))
         }
     }
+}
+
+
+
+// MARK:- Methods
+
+extension CreateAccountView {
     
     // MARK:- Create Account
     
@@ -128,14 +133,9 @@ struct CreateAccountView: View {
         return true
     }
     
+    // MARK:- Open Login Screen
+    
     func openLoginScreen() {
         self.openLoginView = true
-        print("handleSuccessfullLogin")
-    }
-}
-
-struct CreateAccountView_Previews: PreviewProvider {
-    static var previews: some View {
-        CreateAccountView()
     }
 }

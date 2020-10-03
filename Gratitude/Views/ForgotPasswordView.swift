@@ -45,6 +45,13 @@ struct ForgotPasswordView: View {
             }
         }
     }
+}
+
+// MARK: - Methods
+
+extension ForgotPasswordView {
+
+    // MARK:- Reset Password
     
     func resetPassword() {
         Auth.auth().sendPasswordReset(withEmail: self.email) { (error: Error?) in
@@ -60,10 +67,6 @@ struct ForgotPasswordView: View {
             self.alertMessage = "Check your email for a reset password mail"
         }
     }
-}
 
-struct ForgotPasswordView_Previews: PreviewProvider {
-    static var previews: some View {
-        ForgotPasswordView()
-    }
+    
 }

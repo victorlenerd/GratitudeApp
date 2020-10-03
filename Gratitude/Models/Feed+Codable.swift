@@ -8,13 +8,18 @@
 
 import Foundation
 
-struct FeedContainer: Codable {
-    let friend: FriendContainer
-    let notes: NoteContainer
+struct FeedContainer: Hashable, Codable {
+    
+    static func == (lhs: FeedContainer, rhs: FeedContainer) -> Bool {
+        lhs.friend.UID == rhs.friend.UID
+    }
+    
+    let friend: FriendInfo
+    let notes: [NoteContainer]?
     
     enum CodingKeys: String, CodingKey {
-        case friend
-        case notes
+        case friend = "info"
+        case notes = "public_notes"
     }
     
 }
