@@ -9,7 +9,7 @@
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
 
-ROOT_URL = https:/$()/gratitude-app-server.appengine.com
+ROOT_URL = https:/$()/gratitude-app-server.ue.r.appspot.com
 
 APP_NAME = Gratitude
 APP_BUNDLE_ID = victornwa.Gratitude
