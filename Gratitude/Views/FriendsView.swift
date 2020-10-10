@@ -120,13 +120,13 @@ struct FriendsView: View {
                             }
                             .listStyle(PlainListStyle())
                         } else {
-                            Text("You don't have any friends yet! ;)")
+                            Text("You don't have any friends yet!")
                                 .fontWeight(.heavy)
                                 .opacity(0.6)
                         }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else {
+                } else if (self.friendInfo != nil) {
                     VStack {
                         Text(self.friendInfo?.DisplayName ?? "")
                             .fontWeight(.bold)
@@ -135,6 +135,11 @@ struct FriendsView: View {
                             .fontWeight(.light)
                             .padding(.bottom, 50)
                         Button("Add Friend", action: sendFriendRequest)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    VStack {
+                        EmptyView()
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
@@ -156,6 +161,10 @@ struct FriendsView: View {
                 self.fetchRequest()
             }
             .navigationBarTitle("Friends", displayMode: .large)
+            .navigationBarItems(trailing: Button(action: self.fetchRequest) {
+                Text("Reload")
+                Image(systemName: "arrow.clockwise")
+            })
             .padding()
         }
     }
@@ -270,8 +279,10 @@ extension FriendsView {
     // MARK: - Fetch All Friends Data
     
     func fetchRequest() {
+        appState.isLoading = true
         FriendClient.getUserFriends(userID: Auth.auth().currentUser?.uid ?? "") { (_ error: Error?, _ friends: [FriendContainer]?) in
             DispatchQueue.main.sync {
+                appState.isLoading = false
                 if let err = error {
                     self.alertTitle = "Error"
                     self.alertMessage = err.localizedDescription

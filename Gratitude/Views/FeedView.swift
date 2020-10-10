@@ -10,31 +10,49 @@ import SwiftUI
 import Firebase
 
 struct FeedView: View {
+    @EnvironmentObject var appState: AppState
     
     @State private var currentUserID: String = ""
     @State private var feeds: [FeedContainer] = []
+    @State private var numberOfNotes = 0
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(feeds, id: \.self) { (feed: FeedContainer) in
-                    Section(header: Text("\(feed.friend.DisplayName)")) {
-                        ForEach(feed.notes!, id: \.self) { (note: NoteContainer) in
-                            NavigationLink(destination: FeedNoteView(note: note)) {
-                                HStack {
-                                    Text(self.getDate(isoDate: note.createDate!))
-                                    Text("\(note.text)")
-                                        .lineLimit(2)
-                                        .padding(.top, 10)
-                                        .padding(.bottom, 10)
+            VStack {
+                if numberOfNotes > 0 {
+                    List {
+                        ForEach(feeds, id: \.self) { (feed: FeedContainer) in
+                            if feed.notes!.count > 0 {
+                                Section(header: Text("\(feed.friend.DisplayName)")) {
+                                    ForEach(feed.notes!, id: \.self) { (note: NoteContainer) in
+                                        NavigationLink(destination: FeedNoteView(note: note)) {
+                                            HStack {
+                                                Text(self.getDate(isoDate: note.createDate!))
+                                                Text("\(note.text)")
+                                                    .lineLimit(2)
+                                                    .padding(.top, 10)
+                                                    .padding(.bottom, 10)
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
-                    }
+                    }.listStyle(GroupedListStyle())
+                } else {
+                    Text("Notes your friends share would show up here")
+                        .fontWeight(.heavy)
+                        .opacity(0.6)
                 }
-            }.listStyle(GroupedListStyle())
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .navigationBarTitle("Feed", displayMode: .large)
-        }.onAppear() {
+            .navigationBarItems(trailing: Button(action: self.fetchFeeds) {
+                Text("Reload Feed")
+                Image(systemName: "arrow.clockwise")
+            })
+        }
+        .onAppear() {
             self.currentUserID = Auth.auth().currentUser?.uid ?? ""
             self.fetchFeeds()
         }
@@ -45,13 +63,18 @@ struct FeedView: View {
 extension FeedView {
     
     func fetchFeeds() {
+        appState.isLoading = true
         FeedsClient.getUserFeeds(userID: self.currentUserID) { (error: Error?, feeds: [FeedContainer]?) in
-            if let err = error {
-                print(err)
-                return
+            DispatchQueue.main.async {
+                appState.isLoading = false
+                if let err = error {
+                    print(err)
+                    return
+                }
+                
+                self.feeds = []
+                self.feeds = feeds!
             }
-            
-            self.feeds = feeds!
         }
     }
     

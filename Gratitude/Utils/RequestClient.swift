@@ -38,6 +38,8 @@ struct RequestClient<A: Decodable> {
                 } catch {
                     completionHandler(GenericError.Known(message: error.localizedDescription), nil)
                 }
+            } else if httpStatusCode == 404 {
+                completionHandler(GenericError.Known(message: "Resource Not Found"), nil)
             } else {
                completionHandler(GenericError.Unknown, nil)
             }
