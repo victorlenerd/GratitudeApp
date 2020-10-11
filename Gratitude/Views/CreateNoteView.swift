@@ -35,10 +35,11 @@ struct CreateNoteView: View {
                 
                 do {
                     try self.managedContext.save()
+                    NoteClient.putNote(note: note, isPublic: false) { (_, _) in
+                    }
                 } catch {
                     fatalError("Failed to create your: \(error.localizedDescription)")
                 }
-    
             }
         }
     }

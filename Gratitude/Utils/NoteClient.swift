@@ -12,14 +12,14 @@ struct NoteClient {
     
     // MARK:- Put Note Request
     
-    static func putNote(note: Note, completionHandler: @escaping (_ error: Error?, _ note: NoteContainer?) -> Void ) {
+    static func putNote(note: Note, isPublic: Bool, completionHandler: @escaping (_ error: Error?, _ note: NoteContainer?) -> Void ) {
         var request = URLRequest(url: URL(string: "\(ENVS.rootURL)/notes")!)
         
         let noteBody = NoteContainer(
             text: note.text!,
             isPublic: true,
             likes: note.likes,
-            uuid: note.uuid!,
+            uuid: note.uuid!.uuidString,
             views: note.views,
             ownerID: note.ownerID!, 
             createDate: nil
@@ -40,7 +40,7 @@ struct NoteClient {
     
     static func getUserNotes(userID: String, completionHandler: @escaping (_ error: Error?, _ notes: [NoteContainer]?) -> Void) {
         
-        var request = URLRequest(url: URL(string: "\(ENVS.rootURL)/notes")!)
+        var request = URLRequest(url: URL(string: "\(ENVS.rootURL)/notes?ownerID=\(userID)")!)
         
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

@@ -41,14 +41,17 @@ struct FeedView: View {
                     }.listStyle(GroupedListStyle())
                 } else {
                     Text("Notes your friends share would show up here")
-                        .fontWeight(.heavy)
-                        .opacity(0.6)
+                        .fontWeight(.light)
+                        .multilineTextAlignment(.center)
+                        .opacity(0.5)
+                        .padding(.leading, 50)
+                        .padding(.trailing, 50)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .navigationBarTitle("Feed", displayMode: .large)
             .navigationBarItems(trailing: Button(action: self.fetchFeeds) {
-                Text("Reload Feed")
+                Text("Reload")
                 Image(systemName: "arrow.clockwise")
             })
         }

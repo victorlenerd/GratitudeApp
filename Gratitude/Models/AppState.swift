@@ -14,10 +14,12 @@ final class AppState: ObservableObject {
     @Published var isLoading: Bool?
     @Published var isOnline: Bool?
     @Published var isLoggedIn: Bool?
+    @Published var FCMToken: String?
     
-    init(isLoading: Bool, isOnline: Bool, isLoggedIn: Bool) {
+    init(isLoading: Bool, isOnline: Bool, isLoggedIn: Bool, FCMToken: String?) {
         self.isLoading = isLoading
         self.isOnline = isOnline
         self.isLoggedIn = isLoggedIn
+        self.FCMToken = FCMToken
     }
 }

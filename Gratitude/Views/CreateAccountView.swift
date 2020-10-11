@@ -104,6 +104,11 @@ extension CreateAccountView {
                         self.alertMessage = err.localizedDescription
                     }
                     
+                    
+                    if appState.FCMToken != nil {
+                        UsersTokenClient.putUserToken(userID: Auth.auth().currentUser!.uid, FCMToken: appState.FCMToken!) { (error: Error?, feeds: UserToken?) in }
+                    }
+                    
                     appState.isLoading = false
                     appState.isLoggedIn = true
                 }

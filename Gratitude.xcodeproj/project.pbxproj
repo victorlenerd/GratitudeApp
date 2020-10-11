@@ -18,6 +18,8 @@
 		E72B95A22504668A00096A8A /* ModifyNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B95A12504668A00096A8A /* ModifyNoteView.swift */; };
 		E72B95A72504DA8700096A8A /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B95A62504DA8700096A8A /* TextView.swift */; };
 		E758A566252A8AD600C4202E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E758A565252A8AD600C4202E /* GoogleService-Info.plist */; };
+		E758A60A2533A20F00C4202E /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E758A6092533A20E00C4202E /* UserToken.swift */; };
+		E758A6122533A27F00C4202E /* UserTokenClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E758A6112533A27F00C4202E /* UserTokenClient.swift */; };
 		E78E23FA7EAACF5BA3E8D56D /* Pods_GratitudeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A5422A71E762C499A5F8F5 /* Pods_GratitudeTests.framework */; };
 		E7BCEEF5250EB75900E8D221 /* NoteClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEF4250EB75800E8D221 /* NoteClient.swift */; };
 		E7BCEEF725104C2D00E8D221 /* GenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEF625104C2D00E8D221 /* GenericError.swift */; };
@@ -87,6 +89,8 @@
 		E72B95A12504668A00096A8A /* ModifyNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyNoteView.swift; sourceTree = "<group>"; };
 		E72B95A62504DA8700096A8A /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		E758A565252A8AD600C4202E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E758A6092533A20E00C4202E /* UserToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserToken.swift; sourceTree = "<group>"; };
+		E758A6112533A27F00C4202E /* UserTokenClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenClient.swift; sourceTree = "<group>"; };
 		E7BCEEF4250EB75800E8D221 /* NoteClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteClient.swift; sourceTree = "<group>"; };
 		E7BCEEF625104C2D00E8D221 /* GenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericError.swift; sourceTree = "<group>"; };
 		E7BCEEF92510508000E8D221 /* FriendClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendClient.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 				E7C727782516AED200B311E1 /* Feed+Codable.swift */,
 				E7C72782251B656A00B311E1 /* AppState.swift */,
 				E7D9E81F2520E01400E24ED1 /* TimeAgo.swift */,
+				E758A6092533A20E00C4202E /* UserToken.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 				E7C7276E25168AFB00B311E1 /* ENVS.swift */,
 				E7C727762516A64E00B311E1 /* RequestClient.swift */,
 				E7C436E2251D12DA002031C5 /* NetworkMonitor.swift */,
+				E758A6112533A27F00C4202E /* UserTokenClient.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -580,11 +586,13 @@
 				E7C727772516A64E00B311E1 /* RequestClient.swift in Sources */,
 				E7C727792516AED200B311E1 /* Feed+Codable.swift in Sources */,
 				E72B959425045A7E00096A8A /* ForgotPasswordView.swift in Sources */,
+				E758A60A2533A20F00C4202E /* UserToken.swift in Sources */,
 				E72B959E2504663F00096A8A /* SingleNoteView.swift in Sources */,
 				E7C436EB251E4765002031C5 /* ShareDialog.swift in Sources */,
 				E7EF824324FD659A00089B94 /* Gratitude.xcdatamodeld in Sources */,
 				E7D9E8202520E01400E24ED1 /* TimeAgo.swift in Sources */,
 				E7C7277125169ACB00B311E1 /* Note+Codable.swift in Sources */,
+				E758A6122533A27F00C4202E /* UserTokenClient.swift in Sources */,
 				E7EF823E24FD659A00089B94 /* AppDelegate.swift in Sources */,
 				E7C436F9251FAE3F002031C5 /* Friend+CoreDataProperties.swift in Sources */,
 				E7BCEEF725104C2D00E8D221 /* GenericError.swift in Sources */,

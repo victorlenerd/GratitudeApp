@@ -24,8 +24,7 @@ struct FriendsView: View {
     @State private var friendInfo: FriendInfo?
     @State private var friends: [FriendContainer] = []
     
-    @State
-    private var userID: String = ""
+    @State private var userID: String = ""
     
     let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
     
@@ -121,8 +120,11 @@ struct FriendsView: View {
                             .listStyle(PlainListStyle())
                         } else {
                             Text("You don't have any friends yet!")
-                                .fontWeight(.heavy)
-                                .opacity(0.6)
+                                .fontWeight(.light)
+                                .multilineTextAlignment(.center)
+                                .opacity(0.5)
+                                .padding(.leading, 50)
+                                .padding(.trailing, 50)
                         }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)

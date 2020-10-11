@@ -98,7 +98,7 @@ extension SingleNoteView {
             return
         }
         
-        NoteClient.putNote(note: note) { (error: Error?, note: NoteContainer?) in
+        NoteClient.putNote(note: note, isPublic: true) { (error: Error?, note: NoteContainer?) in
             DispatchQueue.main.async {
                 if let err = error {
                     self.alertTitle = "Error"

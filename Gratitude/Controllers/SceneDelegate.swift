@@ -11,7 +11,7 @@ import SwiftUI
 import Firebase
 
 
-var appState = AppState(isLoading: false, isOnline: false, isLoggedIn: false)
+var appState = AppState(isLoading: false, isOnline: false, isLoggedIn: false, FCMToken: nil)
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 

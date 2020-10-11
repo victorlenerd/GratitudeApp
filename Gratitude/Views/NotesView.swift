@@ -11,6 +11,8 @@ import Firebase
 
 
 struct NotesView: View {
+    @Environment(\.managedObjectContext) var managedContext
+
     @EnvironmentObject var appState: AppState
     @FetchRequest(
         entity: Note.entity(),
@@ -26,18 +28,25 @@ struct NotesView: View {
         NavigationView {
             ZStack {
                 VStack {
-                    List(notes, id: \.self) { (note: Note) in
-                        NavigationLink(destination: SingleNoteView(note: note)) {
-                            VStack(alignment: .leading) {
-                                Text(note.createDate?.timeAgoDisplay() ?? "")
-                                    .font(.system(size: 12))
-                                    .opacity(0.6)
-                                Text("\(note.text!.description)")
-                                    .lineLimit(1)
-                                    .padding(.top)
+                    if notes.count > 0 {
+                        List(notes, id: \.self) { (note: Note) in
+                            NavigationLink(destination: SingleNoteView(note: note)) {
+                                VStack(alignment: .leading) {
+                                    Text("\(note.text!.description)")
+                                        .lineLimit(1)
+                                        .padding(.top)
+                                }
                             }
-                        }
-                    }.listStyle(PlainListStyle())
+                        }.listStyle(PlainListStyle())
+                    } else {
+                        Text("You don't have any notes yet!")
+                            .fontWeight(.light)
+                            .multilineTextAlignment(.center)
+                            .opacity(0.5)
+                            .padding(.leading, 50)
+                            .padding(.trailing, 50)
+
+                    }
                 }
                 .navigationBarTitle("Notes", displayMode: .large)
                 .navigationBarItems(
@@ -86,10 +95,21 @@ extension NotesView {
     func logout() {
         do {
             try Auth.auth().signOut()
+            self.deleteAllNote()
             appState.isLoggedIn = false
         } catch {
             fatalError("Failed to signout \(error.localizedDescription)")
         }
+    }
+    
+    // MARK:- Delete All Notes
+    
+    func deleteAllNote() {
+        for note in notes {
+            managedContext.delete(note)
+        }
+        
+        try? managedContext.save()
     }
     
 }

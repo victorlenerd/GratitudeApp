@@ -10,6 +10,8 @@ import SwiftUI
 import Firebase
 
 struct LoginView: View {
+    @Environment(\.managedObjectContext) var managedContext
+
     @EnvironmentObject var appState: AppState
 
     @State private var email: String = ""
@@ -82,7 +84,10 @@ extension LoginView {
             }
             
             if authDataResult != nil {
-                appState.isLoggedIn = true
+                if appState.FCMToken != nil {
+                    UsersTokenClient.putUserToken(userID: Auth.auth().currentUser!.uid, FCMToken: appState.FCMToken!) { (error: Error?, feeds: UserToken?) in }
+                }
+                self.fetchNotes(userID: (authDataResult?.user.uid)!)
             }
             
             appState.isLoading = false
@@ -109,5 +114,36 @@ extension LoginView {
         }
 
         return true
-    }    
+    }
+    
+    func fetchNotes(userID: String) {
+        appState.isLoading = true
+        NoteClient.getUserNotes(userID: userID) { (error: Error?, noteContainer: [NoteContainer]?) in
+            guard let container = noteContainer else {
+                return
+            }
+                    
+            DispatchQueue.main.async {
+                for content in container {
+                    print("content", content)
+                    do {
+                        let note = Note(context: managedContext)
+                        note.text = content.text
+                        note.ownerID = content.ownerID
+                        note.uploaded = content.isPublic
+                        note.uuid = UUID.init(uuidString: content.uuid)
+                        note.createDate = Date()
+                        
+                        try managedContext.save()
+                    } catch {
+                        fatalError("Failed to save note" + error.localizedDescription)
+                    }
+                }
+
+                
+                appState.isLoading = false
+                appState.isLoggedIn = true
+            }
+        }
+    }
 }

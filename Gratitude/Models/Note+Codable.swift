@@ -13,7 +13,7 @@ struct NoteContainer: Hashable, Codable {
     let text: String
     let isPublic: Bool
     let likes: Int64
-    let uuid: UUID
+    let uuid: String
     let views: Int64
     let ownerID: String
     let createDate: String?
