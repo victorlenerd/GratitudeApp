@@ -1,10 +1,20 @@
 # Gratitude
 
-Minimalist Journal App. Basically, users can create notes and share notes with their friends on the app.
-Users can find their friends on the app by email, and notifcations are sent to devices of friends when a note is shared
+A Minimalist Journal App. 
+
+## Description
+
+Basically, users can create notes and share notes with their friends on the app.
+Users can find their friends on the app by email, and notifications are sent to devices of friends when a note is shared
 or a friend request is received.
 
 [Link To Backend Repo](https://github.com/victorlenerd/GratitudeAppServer)
+
+
+## Features
+
+* Firebase Auth
+* Firebase Message (Notifications)
 
 ## Running
 
