@@ -14,6 +14,7 @@ There are two schemes on the app.
 2. Gratitude: The runs against the backend hosted on [Google App Engine](https://gratitude-app-server.ue.r.appspot.com/)
 
 ## Screenshots
+<div align="center">
 
 <img src="/screenshots/0.png" height="400" />
 <img src="/screenshots/1.png" height="400" />
@@ -21,6 +22,8 @@ There are two schemes on the app.
 <img src="/screenshots/3.png" height="400" />
 <img src="/screenshots/4.png" height="400" />
 <img src="/screenshots/5.png" height="400" />
+
+</div>
 
 ## License
 
