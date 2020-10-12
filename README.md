@@ -15,14 +15,12 @@ There are two schemes on the app.
 
 ## Screenshots
 
-
-<img src="/screenshots/0.png" height="350" alt="Screenshot"/>
-
-![Notes Screen](/screenshots/1.png?raw=true =250x "Notes Screen")
-![Friends Screen](/screenshots/2.png?raw=true 250x "Friends Screen")
-![Share Alert](/screenshots/3.png?raw=true 250x "Share Screen")
-![Share Sheet](/screenshots/4.png?raw=true 250x "Share Sheet Screen")
-![Feed Screen](/screenshots/5.png?raw=true 250x "Feed Screen")
+<img src="/screenshots/0.png" height="400" />
+<img src="/screenshots/1.png" height="400" />
+<img src="/screenshots/2.png" height="400" />
+<img src="/screenshots/3.png" height="400" />
+<img src="/screenshots/4.png" height="400" />
+<img src="/screenshots/5.png" height="400" />
 
 ## License
 
