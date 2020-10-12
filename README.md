@@ -27,6 +27,8 @@ There are two schemes on the app.
 <div align="center">
 
 <img src="/screenshots/0.png" height="400" />
+<img src="/screenshots/6.png" height="400" />
+<img src="/screenshots/7.png" height="400" />
 <img src="/screenshots/1.png" height="400" />
 <img src="/screenshots/2.png" height="400" />
 <img src="/screenshots/3.png" height="400" />
