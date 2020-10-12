@@ -15,7 +15,7 @@ There are two schemes on the app.
 
 ## Screenshots
 
-![Launch Screen](/screenshots/0.png=250x)
+![Launch Screen](/screenshots/0.png 250x)
 ![Notes Screen](/screenshots/1.png?raw=true =250x "Notes Screen")
 ![Friends Screen](/screenshots/2.png?raw=true 250x "Friends Screen")
 ![Share Alert](/screenshots/3.png?raw=true 250x "Share Screen")
