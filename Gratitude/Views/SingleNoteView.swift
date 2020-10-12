@@ -127,7 +127,7 @@ extension SingleNoteView {
     // MARK:- Share Note On Other Notes
     
     func shareOnOtherApps() {
-        self.showShareAlert = true
+        self.showShareSheet = true
     }
     
 }

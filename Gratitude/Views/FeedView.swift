@@ -77,6 +77,14 @@ extension FeedView {
                 
                 self.feeds = []
                 self.feeds = feeds!
+                
+                var totalNote = 0
+                
+                feeds?.forEach({ (feed: FeedContainer) in
+                    totalNote += feed.notes?.count ?? 0
+                })
+                
+                self.numberOfNotes = totalNote
             }
         }
     }
