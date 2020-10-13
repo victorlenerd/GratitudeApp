@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>303374300686-i8li043s6efea4qkhi19i5bdmeqr34ke.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.303374300686-i8li043s6efea4qkhi19i5bdmeqr34ke</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDRfLbR9QHmLOq4bpncdbeKHX7_QsV75rU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>303374300686</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>victornwa.Gratitude</string>
+	<key>PROJECT_ID</key>
+	<string>gratitude-8563a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>gratitude-8563a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:303374300686:ios:505533ecc16efaa326ee5f</string>
+	<key>DATABASE_URL</key>
+	<string>https://gratitude-8563a.firebaseio.com</string>
+</dict>
+</plist>

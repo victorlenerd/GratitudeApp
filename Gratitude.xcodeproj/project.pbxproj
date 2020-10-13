@@ -17,10 +17,10 @@
 		E72B95A02504666300096A8A /* CreateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B959F2504666300096A8A /* CreateNoteView.swift */; };
 		E72B95A22504668A00096A8A /* ModifyNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B95A12504668A00096A8A /* ModifyNoteView.swift */; };
 		E72B95A72504DA8700096A8A /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72B95A62504DA8700096A8A /* TextView.swift */; };
-		E758A566252A8AD600C4202E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E758A565252A8AD600C4202E /* GoogleService-Info.plist */; };
 		E758A60A2533A20F00C4202E /* UserToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E758A6092533A20E00C4202E /* UserToken.swift */; };
 		E758A6122533A27F00C4202E /* UserTokenClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E758A6112533A27F00C4202E /* UserTokenClient.swift */; };
 		E78E23FA7EAACF5BA3E8D56D /* Pods_GratitudeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A5422A71E762C499A5F8F5 /* Pods_GratitudeTests.framework */; };
+		E792742B2535F9A1000D16D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E792742A2535F9A1000D16D1 /* GoogleService-Info.plist */; };
 		E7BCEEF5250EB75900E8D221 /* NoteClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEF4250EB75800E8D221 /* NoteClient.swift */; };
 		E7BCEEF725104C2D00E8D221 /* GenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEF625104C2D00E8D221 /* GenericError.swift */; };
 		E7BCEEFA2510508000E8D221 /* FriendClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7BCEEF92510508000E8D221 /* FriendClient.swift */; };
@@ -88,9 +88,9 @@
 		E72B959F2504666300096A8A /* CreateNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteView.swift; sourceTree = "<group>"; };
 		E72B95A12504668A00096A8A /* ModifyNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyNoteView.swift; sourceTree = "<group>"; };
 		E72B95A62504DA8700096A8A /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
-		E758A565252A8AD600C4202E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E758A6092533A20E00C4202E /* UserToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserToken.swift; sourceTree = "<group>"; };
 		E758A6112533A27F00C4202E /* UserTokenClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenClient.swift; sourceTree = "<group>"; };
+		E792742A2535F9A1000D16D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E7BCEEF4250EB75800E8D221 /* NoteClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteClient.swift; sourceTree = "<group>"; };
 		E7BCEEF625104C2D00E8D221 /* GenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericError.swift; sourceTree = "<group>"; };
 		E7BCEEF92510508000E8D221 /* FriendClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendClient.swift; sourceTree = "<group>"; };
@@ -285,7 +285,7 @@
 				E7C9074325029F320095B122 /* Views */,
 				E7EF824624FD659C00089B94 /* Assets.xcassets */,
 				E7EF824B24FD659C00089B94 /* LaunchScreen.storyboard */,
-				E758A565252A8AD600C4202E /* GoogleService-Info.plist */,
+				E792742A2535F9A1000D16D1 /* GoogleService-Info.plist */,
 				E7EF824E24FD659C00089B94 /* Info.plist */,
 				E7EF824124FD659A00089B94 /* Gratitude.xcdatamodeld */,
 				E7EF824824FD659C00089B94 /* Preview Content */,
@@ -445,7 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7EF824D24FD659C00089B94 /* LaunchScreen.storyboard in Resources */,
-				E758A566252A8AD600C4202E /* GoogleService-Info.plist in Resources */,
+				E792742B2535F9A1000D16D1 /* GoogleService-Info.plist in Resources */,
 				E7EF824A24FD659C00089B94 /* Preview Assets.xcassets in Resources */,
 				E7EF824724FD659C00089B94 /* Assets.xcassets in Resources */,
 			);
