@@ -2,3 +2,4 @@ Gratitude/GoogleService-Info.plist
 Pods/
 .idea/
 Podfile.lock
+.DS_Store
