@@ -10,6 +10,11 @@ or a friend request is received.
 
 [Link To Backend Repo](https://github.com/victorlenerd/GratitudeAppServer)
 
+## Tool
+
+* Swift Version 5.3
+* Xcode Version 12.0
+* IOS Development Version 13.6 
 
 ## Features
 
